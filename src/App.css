@@ -43,11 +43,12 @@
 } */
 
 .sidebar {
-  background-color: #a30909be
+  background-color: #a30909;
+  height: 100%;
 }
 
 .sidebar ul li:hover {
-  background-color: #a30909be;
+  background-color: #e11f26;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -57,7 +58,7 @@
 }
 
 .sidebar .active {
-  background-color: #a30909be;
+  background-color: #a30909;
   border-radius: 5px;
   color: white !important;
 }
@@ -67,7 +68,7 @@
 }
 
 .navbar {
-background-color: #a30909be
+  background-color: #a30909be;
 }
 
 .nav-margin {

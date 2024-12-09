@@ -353,7 +353,7 @@ function Sidebar() {
           <span className="text-white text-decoration-none p-1">
             <i className="bi bi-person-circle me-3 fs-4"></i>
             <span>
-              <strong className="fs-4">It's Me</strong>
+              <strong className="fs-4">It's User</strong>
             </span>
           </span>
         </div>

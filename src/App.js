@@ -45,15 +45,19 @@ function App() {
   return (
     <BrowserRouter>
       <div className="d-flex">
-        <div className={toggle ? "d-none" : "w-auto position-fixed"}>
+        <div
+          className={toggle ? "d-none" : "w-auto position-fixed overflow-auto"}
+          style={{ backgroundColor: "#a30909" }}
+        >
           <Sidebar />
         </div>
         <div className={toggle ? "d-none" : "invisible"}>
           <Sidebar />
         </div>
-        {/* <Sidebar className={toggle ? "d-none" : ""} /> */}
         <div className="col overflow-auto">
-          <Navbar Toggle={Toggle} />
+          <div className="w-auto position-fixed overflow-auto">
+            <Navbar Toggle={Toggle} />
+          </div>
           <Routes>
             <Route path="/" element={<Dashboard />} />
             {/* <Route path="/users" element={<Users />} /> */}
