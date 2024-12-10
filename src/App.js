@@ -1,10 +1,10 @@
 // import logo from "./logo.svg";
 import Navbar from "./component/Navbar";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Sidebar from "./component/Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./component/Home";
+// import Home from "./component/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Users from "./component/Users";
 // import Orders from "./component/Orders";
@@ -22,8 +22,15 @@ import FixExcel from "./component/FixExcel";
 import InsertCharging from "./component/InsertCharging";
 import FilterDischarge from "./component/FilterDischarge";
 import Dashboard from "./component/Dashboard";
+import SiteDown from "./component/SiteDown";
+import SnmpDown from "./component/SnmpDown";
+import PowerDown from "./component/PowerDown";
+import NetworkDown from "./component/NetworkDown";
+import WarningScc from "./component/WarningScc";
+import WarningSnmp from "./component/WarningSnmp";
+import SiteUp from "./component/SiteUp";
 function App() {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   function Toggle() {
     setToggle(!toggle);
   }
@@ -60,6 +67,13 @@ function App() {
           </div>
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/sitedown" element={<SiteDown />} />
+            <Route path="/snmpdown" element={<SnmpDown />} />
+            <Route path="/powerdown" element={<PowerDown />} />
+            <Route path="/networkdown" element={<NetworkDown />} />
+            <Route path="/warningscc" element={<WarningScc />} />
+            <Route path="/warningsnmp" element={<WarningSnmp />} />
+            <Route path="/siteup" element={<SiteUp />} />
             {/* <Route path="/users" element={<Users />} /> */}
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/form" element={<Form />} /> */}

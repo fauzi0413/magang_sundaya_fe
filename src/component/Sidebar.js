@@ -71,7 +71,7 @@ function Sidebar() {
               <ul className="flex-column pl-2 nav">
                 <li className="nav-item">
                   <Link
-                    to="/"
+                    to="/sitedown"
                     className="dropdown-item text-white"
                     onClick={(e) => {
                       setActive(2);
@@ -86,7 +86,7 @@ function Sidebar() {
 
                 <li className="nav-item">
                   <Link
-                    to="/"
+                    to="/snmpdown"
                     className="dropdown-item text-white"
                     onClick={(e) => {
                       setActive(2);
@@ -101,7 +101,7 @@ function Sidebar() {
 
                 <li className="nav-item">
                   <Link
-                    to="/"
+                    to="/powerdown"
                     className="dropdown-item text-white"
                     onClick={(e) => {
                       setActive(2);
@@ -116,7 +116,7 @@ function Sidebar() {
 
                 <li className="nav-item">
                   <Link
-                    to="/"
+                    to="/networkdown"
                     className="dropdown-item text-white"
                     onClick={(e) => {
                       setActive(2);
@@ -132,7 +132,7 @@ function Sidebar() {
             </div>
           </li>
 
-          <Link to="/" className="text-white text-decoration-none">
+          <Link to="/siteup" className="text-white text-decoration-none">
             <li
               className={active === 2 ? "active nav-item p-2" : "nav-item p-2"}
               onClick={(e) => setActive(2)}

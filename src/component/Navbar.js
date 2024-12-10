@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar({ Toggle }) {
+  const [visible, setVisible] = useState(true); // State untuk visibility navbar
+  let timeoutId;
+
+  const handleMouseMove = () => {
+    setVisible(true); // Tampilkan navbar saat ada pergerakan mouse
+
+    // Reset timer untuk menyembunyikan navbar
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      setVisible(false); // Sembunyikan navbar setelah 3 detik
+    }, 3000);
+  };
+
+  useEffect(() => {
+    // Tambahkan event listener untuk mousemove
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      // Hapus event listener saat komponen di-unmount
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
   return (
-    <nav className="navbar navbar-dark">
+    <nav className={`navbar navbar-dark ${visible ? "d-block" : "d-none"}`}>
       {/* <a className="navbar-brand d-none d-md-block" href="!#">
         Dashboard
       </a> */}

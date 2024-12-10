@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // import RectiSetting from "./child/RectiSetting";
 import EChartsExample from "./EChartsExample ";
@@ -7,8 +7,8 @@ import CardBox from "./utils/CardBox";
 import GeoMap from "./GeoMap";
 
 function Dashboard() {
-  const [dataFromChild, setDataFromChild] = useState(null);
-  const [chargeValue, setChargeValue] = useState(null);
+  // const [dataFromChild, setDataFromChild] = useState(null);
+  // const [chargeValue, setChargeValue] = useState(null);
 
   // const receiveDataFromChild = (data) => {
   //   // Update state or perform any action with the received data
@@ -92,6 +92,7 @@ function Dashboard() {
               value="19"
               descvalue="/ 122 site"
               footnote="10.9%"
+              route="snmpdown"
             />
 
             <CardBox
@@ -101,6 +102,7 @@ function Dashboard() {
               value="19"
               descvalue="/ 122 site"
               footnote="10.9%"
+              route="powerdown"
             />
 
             <CardBox
@@ -110,6 +112,7 @@ function Dashboard() {
               value="19"
               descvalue="/ 122 site"
               footnote="10.9%"
+              route="networkdown"
             />
 
             <CardBox
@@ -119,6 +122,7 @@ function Dashboard() {
               value="19"
               descvalue="/ 122 site"
               footnote="10.9%"
+              route="sitedown"
             />
           </div>
 
@@ -130,6 +134,7 @@ function Dashboard() {
               value="19"
               descvalue="/ 122 site"
               footnote="10.9%"
+              route="warningscc"
             />
 
             <CardBox
@@ -139,6 +144,7 @@ function Dashboard() {
               value="19"
               descvalue="/ 122 site"
               footnote="10.9%"
+              route="warningsnmp"
             />
 
             <CardBox
@@ -148,6 +154,7 @@ function Dashboard() {
               value="102"
               descvalue="/ 122 site"
               footnote="90.1%"
+              route="siteup"
             />
           </div>
 
@@ -236,7 +243,7 @@ function Dashboard() {
                   <span class="page-link">1</span>
                 </li>
                 <li class="page-item">
-                  <a class="page-link" href="#">
+                  <a class="page-link" href="/">
                     2
                   </a>
                 </li>
