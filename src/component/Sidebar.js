@@ -28,7 +28,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="sidebar d-flex justify-content-between flex-column text-white ps-3 py-3 pe-5 p-3 vh-100">
+    <div className="sidebar d-flex bg-primary justify-content-between flex-column text-white ps-3 py-3 pe-5 p-3 vh-100">
       <div>
         <span className="text-white text-decoration-none p-3">
           <img
@@ -160,7 +160,7 @@ function Sidebar() {
               <ul className="flex-column pl-2 nav">
                 <li className="nav-item">
                   <Link
-                    to="/"
+                    to="/troubleticket"
                     className="dropdown-item text-white"
                     onClick={(e) => {
                       setActive(4);

@@ -29,6 +29,8 @@ import NetworkDown from "./component/NetworkDown";
 import WarningScc from "./component/WarningScc";
 import WarningSnmp from "./component/WarningSnmp";
 import SiteUp from "./component/SiteUp";
+import SiteDetail from "./component/SiteDetail";
+import TroubleTicket from "./component/TroubleTicket";
 function App() {
   const [toggle, setToggle] = useState(true);
   function Toggle() {
@@ -53,8 +55,7 @@ function App() {
     <BrowserRouter>
       <div className="d-flex">
         <div
-          className={toggle ? "d-none" : "w-auto position-fixed overflow-auto"}
-          style={{ backgroundColor: "#a30909" }}
+          className={toggle ? "d-none" : "w-auto position-fixed overflow-auto bg-primary"}
         >
           <Sidebar />
         </div>
@@ -74,6 +75,8 @@ function App() {
             <Route path="/warningscc" element={<WarningScc />} />
             <Route path="/warningsnmp" element={<WarningSnmp />} />
             <Route path="/siteup" element={<SiteUp />} />
+            <Route path="/sitedetail" element={<SiteDetail />} />
+            <Route path="/troubleticket" element={<TroubleTicket />} />
             {/* <Route path="/users" element={<Users />} /> */}
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/form" element={<Form />} /> */}

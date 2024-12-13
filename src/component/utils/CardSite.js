@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CardSite=({sitename,ip,sla,downtime,update,pic,gs,lc})=> {
+const CardSite=({sitename,ip,sla,downtime,update,pic,gs,lc,id})=> {
   return (
     <div class="col-12 col-sm-6 col-md-4 col-lg-4 p-3">
       <div class="card">
@@ -18,12 +18,7 @@ const CardSite=({sitename,ip,sla,downtime,update,pic,gs,lc})=> {
             <div class="col-6">
               <div class="mb-2">
                 <label>Lost SLA:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  value={sla}
-                  readOnly
-                />
+                <input type="text" class="form-control" value={sla} readOnly />
               </div>
               <div class="mb-2">
                 <label>Downtime:</label>
@@ -45,38 +40,23 @@ const CardSite=({sitename,ip,sla,downtime,update,pic,gs,lc})=> {
               </div>
               <div class="mb-2">
                 <label>Last PIC:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  value={pic}
-                  readOnly
-                />
+                <input type="text" class="form-control" value={pic} readOnly />
               </div>
             </div>
             <div class="col-6">
               <div class="mb-2">
                 <label>GS:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  value={gs}
-                  readOnly
-                />
+                <input type="text" class="form-control" value={gs} readOnly />
               </div>
               <div class="mb-2">
                 <label>LC:</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  value={lc}
-                  readOnly
-                />
+                <input type="text" class="form-control" value={lc} readOnly />
               </div>
             </div>
           </div>
         </div>
         <div class="card-footer text-center">
-          <a href="/sitedetail" class="btn btn-primary">
+          <a href={`/sitedetail?id=${id}`} class="btn btn-primary">
             Click to Details
           </a>
         </div>

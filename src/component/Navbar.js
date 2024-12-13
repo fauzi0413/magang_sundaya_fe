@@ -26,7 +26,7 @@ function Navbar({ Toggle }) {
     };
   }, []);
   return (
-    <nav className={`navbar navbar-dark ${visible ? "d-block" : "d-none"}`}>
+    <nav className={`navbar bg-primary navbar-dark ${visible ? "d-block" : "d-none"}`}>
       {/* <a className="navbar-brand d-none d-md-block" href="!#">
         Dashboard
       </a> */}

@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import HeaderContent from './utils/HeaderContent';
+import CardSite from "./utils/CardSite";
 
 function SiteUp() {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("/mock/snmpdown.json");
+          console.log(response);
+          const jsonData = await response.json();
+          setData(jsonData.data);
+        } catch (error) {
+          console.error("Ada kesalahan dalam mengambil data:", error);
+        }
+      };
+
+      fetchData();
+    }, []);
   return (
     <div className="p-3 bg-light">
-      <div className="container-fluid">
-        <HeaderContent title={"Site Up"} icon={"bi-router-fill"} />
+      <div className="container">
+        <HeaderContent title={"Site Up"} icon={"bi-building-fill-up"} />
         <div className="row">
           <div className="col-12 p-3 bg-light">
             <div className="justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm">
@@ -16,7 +33,23 @@ function SiteUp() {
                   <option value="option2">Down Time </option>
                 </select>
               </div>
-              <div className="justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm mt-2"></div>
+
+              <div className="row">
+                {data.map((item, index) => (
+                  <CardSite
+                    key={index}
+                    sitename={item.sitename}
+                    ip={item.ip}
+                    sla={item.sla}
+                    downtime={item.downtime}
+                    update={item.update}
+                    pic={item.pic}
+                    gs={item.gs}
+                    lc={item.lc}
+                    id={item.id}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>

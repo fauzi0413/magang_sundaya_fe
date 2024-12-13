@@ -8,37 +8,41 @@
       "update": "10 September 2024",
       "pic": "NOC",
       "gs": "Telkom",
-      "lc": "Telkom"
+      "lc": "Telkom",
+      "id":"001"
     },
     {
-        "sitename":"Jembatan Basah",
-        "ip":"192.169.100.10",
-        "sla":"40 %",
-        "downtime":"1 September 2024",
-        "update":"10 September 2024",
-        "pic":"NOC",
-        "gs":"Telkom",
-        "lc":"Telkom"
-    },
-    {
-      "sitename": "Jembatan Basah",
+      "sitename": "Jembatan kering",
       "ip": "192.169.100.10",
       "sla": "40 %",
       "downtime": "1 September 2024",
       "update": "10 September 2024",
       "pic": "NOC",
       "gs": "Telkom",
-      "lc": "Telkom"
+      "lc": "Telkom",
+      "id": "002"
     },
     {
-      "sitename": "Jembatan Basah",
+      "sitename": "Jembatan saja",
       "ip": "192.169.100.10",
       "sla": "40 %",
       "downtime": "1 September 2024",
       "update": "10 September 2024",
       "pic": "NOC",
       "gs": "Telkom",
-      "lc": "Telkom"
+      "lc": "Telkom",
+      "id": "003"
+    },
+    {
+      "sitename": "Jembatan banyak",
+      "ip": "192.169.100.10",
+      "sla": "40 %",
+      "downtime": "1 September 2024",
+      "update": "10 September 2024",
+      "pic": "NOC",
+      "gs": "Telkom",
+      "lc": "Telkom",
+      "id": "004"
     }
   ]
 }

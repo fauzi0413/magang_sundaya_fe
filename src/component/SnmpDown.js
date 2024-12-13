@@ -21,7 +21,7 @@ function SnmpDown() {
   }, []);
   return (
     <div className="p-3 bg-light">
-      <div className="container-fluid">
+      <div className="container">
         <HeaderContent title={"SNMP Down"} icon={"bi-router-fill"} />
         <div className="row">
           <div className="col-12 p-3 bg-light">
@@ -46,6 +46,7 @@ function SnmpDown() {
                     pic={item.pic}
                     gs={item.gs}
                     lc={item.lc}
+                    id={item.id}
                   />
                 ))}
               </div>
