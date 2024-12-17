@@ -1,13 +1,45 @@
 import React, { useEffect, useState } from "react";
 import EChartsExample from "./EChartsExample ";
 import { useLocation } from "react-router-dom";
+import ModalMaster from "./utils/ModalMaster";
+import ModalBodycrtick from "./utils/ModalBodycrtick";
+import ModalFooter from "./utils/ModalFooter";
 
 function SiteDetail() {
   const location = useLocation();
   const [data, setData] = useState({});
+  const [formData, setFormData] = useState({
+    siteName: "",
+    statusSite: "",
+    problem: "",
+    pic: "",
+    file: null,
+    response: "",
+  });
 
   const searchParams = new URLSearchParams(location.search);
   const site_id = searchParams.get("id");
+
+  // Handler untuk semua input
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "file" ? files[0] : value, // Handle file input
+    }));
+  };
+
+  const handleSave = () => {
+    console.log("Form Data:", formData);
+    alert(`
+      Site Name: ${formData.siteName}
+      Status Site: ${formData.statusSite}
+      Problem: ${formData.problem}
+      PIC: ${formData.pic}
+      File: ${formData.file ? formData.file.name : "No file selected"}
+      Response: ${formData.response}
+    `);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,11 +54,26 @@ function SiteDetail() {
     };
 
     fetchData();
-  }, []);
+  }, [site_id]);
   return (
     <div className="p-3 bg-light">
       <div class="container">
         <div className="row">
+          {/* <!-- Modal --> */}
+          <ModalMaster
+            id={"exampleModal"}
+            title={"Create Trouble Ticket"}
+            body={
+              <ModalBodycrtick
+                formData={formData}
+                handleChange={handleChange}
+              />
+            }
+            footer={
+              <ModalFooter textButton={"Create Button"} onSave={handleSave} />
+            }
+          ></ModalMaster>
+
           <div className="col-12 p-3 bg-light">
             <div className="d-flex justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm">
               {/* <!-- Header --> */}
@@ -35,7 +82,13 @@ function SiteDetail() {
                   {data.id} - {data.sitename}{" "}
                 </h1>
               </div>
-              <button class="btn btn-warning">Create Ticket</button>
+              <button
+                class="btn btn-warning"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Create Ticket
+              </button>
             </div>
           </div>
         </div>
@@ -694,7 +747,7 @@ function SiteDetail() {
                                 <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
                                   <h5 class="mb-0">No. Ticket: 1233333</h5>
                                   <a
-                                    href="#"
+                                    href={`/troubleticket?id=${data.id}`}
                                     class="btn btn-sm btn-outline-secondary"
                                   >
                                     Details
