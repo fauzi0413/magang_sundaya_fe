@@ -46,19 +46,18 @@
 }
 
 .sidebar ul li:hover {
-  background-color: #2596;
+  background-color: #eff3f2;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .sidebar ul li a:hover {
-  color: white !important;
+  color: black !important;
 }
 
 .sidebar .active {
-  background-color: #2596;
+  background-color: #eff3f2;
   border-radius: 5px;
-  color: white !important;
 }
 
 .justify-icon {

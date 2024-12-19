@@ -31,6 +31,9 @@ import WarningSnmp from "./component/WarningSnmp";
 import SiteUp from "./component/SiteUp";
 import SiteDetail from "./component/SiteDetail";
 import TroubleTicket from "./component/TroubleTicket";
+import SLA1 from "./component/SLA1";
+import SLA2 from "./component/SLA2";
+import SLA3 from "./component/SLA3";
 function App() {
   const [toggle, setToggle] = useState(true);
   function Toggle() {
@@ -77,6 +80,9 @@ function App() {
             <Route path="/siteup" element={<SiteUp />} />
             <Route path="/sitedetail" element={<SiteDetail />} />
             <Route path="/troubleticket" element={<TroubleTicket />} />
+            <Route path="/sla1" element={<SLA1 />} />
+            <Route path="/sla2" element={<SLA2 />} />
+            <Route path="/sla3" element={<SLA3 />} />
             {/* <Route path="/users" element={<Users />} /> */}
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/form" element={<Form />} /> */}

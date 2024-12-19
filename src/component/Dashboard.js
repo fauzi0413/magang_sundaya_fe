@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // import RectiSetting from "./child/RectiSetting";
 import EChartsExample from "./EChartsExample ";
@@ -7,6 +7,22 @@ import CardBox from "./utils/CardBox";
 import GeoMap from "./GeoMap";
 
 function Dashboard() {
+  const [dataCard, setDataCard] = useState({});
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`/mock/dataCardDashboard.json`);
+      const jsonData = await response.json();
+      console.log(jsonData.data.snmpdown.site);
+      setDataCard(jsonData);
+    } catch (error) {
+      console.error("Ada kesalahan dalam mengambil data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+    const interval = setInterval(fetchData, 1000);
+    return () => clearInterval(interval);
+  }, []);
   // const [dataFromChild, setDataFromChild] = useState(null);
   // const [chargeValue, setChargeValue] = useState(null);
 
@@ -33,7 +49,6 @@ function Dashboard() {
             <div className="col-12 p-3 bg-light">
               <div className="d-flex justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm">
                 <div>
-                  <input></input>
                   <button className="btn btn-primary ms-2">Search</button>
                 </div>
                 <div>
@@ -89,9 +104,9 @@ function Dashboard() {
               title="SNMP Down"
               icon="bi-arrow-down-circle-fill"
               iconcolor="success" //success = green , warning = yellow , danger = red
-              value="19"
+              value={dataCard?.data?.snmpdown?.site}
               descvalue="/ 122 site"
-              footnote="10.9%"
+              footnote={dataCard?.data?.snmpdown?.percentage}
               route="snmpdown"
             />
 
@@ -99,9 +114,9 @@ function Dashboard() {
               title="Power Down"
               icon="bi-arrow-down-circle-fill"
               iconcolor="success" //success = green , warning = yellow , danger = red
-              value="19"
+              value={dataCard?.data?.powerdown?.site}
               descvalue="/ 122 site"
-              footnote="10.9%"
+              footnote={dataCard?.data?.powerdown?.percentage}
               route="powerdown"
             />
 
@@ -109,9 +124,9 @@ function Dashboard() {
               title="Network Down"
               icon="bi-arrow-down-circle-fill"
               iconcolor="success" //success = green , warning = yellow , danger = red
-              value="19"
+              value={dataCard?.data?.networkdown?.site}
               descvalue="/ 122 site"
-              footnote="10.9%"
+              footnote={dataCard?.data?.networkdown?.percentage}
               route="networkdown"
             />
 
@@ -119,9 +134,9 @@ function Dashboard() {
               title="Site Down"
               icon="bi-arrow-down-circle-fill"
               iconcolor="success" //success = green , warning = yellow , danger = red
-              value="19"
+              value={dataCard?.data?.sitedown?.site}
               descvalue="/ 122 site"
-              footnote="10.9%"
+              footnote={dataCard?.data?.sitedown?.percentage}
               route="sitedown"
             />
           </div>
@@ -131,9 +146,9 @@ function Dashboard() {
               title="Warning SCC"
               icon="bi-arrow-down-circle-fill"
               iconcolor="success" //success = green , warning = yellow , danger = red
-              value="19"
+              value={dataCard?.data?.warningscc?.site}
               descvalue="/ 122 site"
-              footnote="10.9%"
+              footnote={dataCard?.data?.warningscc?.percentage}
               route="warningscc"
             />
 
@@ -141,9 +156,9 @@ function Dashboard() {
               title="Warning SNMP"
               icon="bi-arrow-down-circle-fill"
               iconcolor="success" //success = green , warning = yellow , danger = red
-              value="19"
+              value={dataCard?.data?.warningsnmp?.site}
               descvalue="/ 122 site"
-              footnote="10.9%"
+              footnote={dataCard?.data?.warningsnmp?.percentage}
               route="warningsnmp"
             />
 
@@ -151,9 +166,9 @@ function Dashboard() {
               title="Site Up"
               icon="bi-arrow-up-circle-fill"
               iconcolor="success" //success = green , warning = yellow , danger = red
-              value="102"
+              value={dataCard?.data?.siteup?.site}
               descvalue="/ 122 site"
-              footnote="90.1%"
+              footnote={dataCard?.data?.siteup?.percentage}
               route="siteup"
             />
           </div>

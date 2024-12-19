@@ -1,0 +1,11 @@
+{
+  "data": {
+    "snmpdown": { "site": "19", "percentage": "10.9%" },
+    "powerdown": { "site": "99", "percentage": "10.9%" },
+    "networkdown": { "site": "99", "percentage": "10.9%" },
+    "sitedown": { "site": "99", "percentage": "10.9%" },
+    "warningscc": { "site": "19", "percentage": "10.9%" },
+    "warningsnmp": { "site": "19", "percentage": "10.9%" },
+    "siteup": { "site": "101", "percentage": "90.9%" }
+  }
+}

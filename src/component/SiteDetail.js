@@ -61,7 +61,7 @@ function SiteDetail() {
         <div className="row">
           {/* <!-- Modal --> */}
           <ModalMaster
-            id={"exampleModal"}
+            id={"createTicketModal"}
             title={"Create Trouble Ticket"}
             body={
               <ModalBodycrtick
@@ -70,7 +70,7 @@ function SiteDetail() {
               />
             }
             footer={
-              <ModalFooter textButton={"Create Button"} onSave={handleSave} />
+              <ModalFooter textButton={"Create"} onSave={handleSave} />
             }
           ></ModalMaster>
 
@@ -85,7 +85,7 @@ function SiteDetail() {
               <button
                 class="btn btn-warning"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                data-bs-target="#createTicketModal"
               >
                 Create Ticket
               </button>

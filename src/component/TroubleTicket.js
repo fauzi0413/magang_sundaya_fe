@@ -1,12 +1,46 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import ModalMaster from "./utils/ModalMaster";
+import ModalBodyuptick from "./utils/ModalBodyuptick";
+import ModalFooter from "./utils/ModalFooter";
 
 function TroubleTicket() {
   const location = useLocation();
   const [data, setData] = useState({});
+  const [formData, setFormData] = useState({
+    siteName: "",
+    ticketCode: "",
+    statusSite: "",
+    problem: "",
+    pic: "",
+    file: null,
+    response: "",
+  });
 
   const searchParams = new URLSearchParams(location.search);
   const site_id = searchParams.get("id");
+
+  // Handler untuk semua input
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "file" ? files[0] : value, // Handle file input
+    }));
+  };
+
+  const handleSave = () => {
+    console.log("Form Data:", formData);
+    alert(`
+      Site Name: ${formData.siteName}
+      Ticket Code: ${formData.ticketCode}
+      Status Site: ${formData.statusSite}
+      Problem: ${formData.problem}
+      PIC: ${formData.pic}
+      File: ${formData.file ? formData.file.name : "No file selected"}
+      Response: ${formData.response}
+    `);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,23 +49,48 @@ function TroubleTicket() {
         console.log(response);
         const jsonData = await response.json();
         setData(jsonData);
+        // Set nilai default untuk form berdasarkan data API
+        setFormData({
+          siteName: jsonData.sitename || "",
+          ticketCode: jsonData.ticket_id || "",
+          statusSite: "",
+          problem: "",
+          pic: "",
+          file: null,
+          response: "",
+        });
       } catch (error) {
         console.error("Ada kesalahan dalam mengambil data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [site_id]);
   return (
     <div className="p-3 bg-light">
       <div class="container">
         <div className="row">
+          {/* <!-- Modal --> */}
+          <ModalMaster
+            id={"updateTicketModal"}
+            title={"Update Trouble Ticket"}
+            body={
+              <ModalBodyuptick
+                formData={formData}
+                handleChange={handleChange}
+              />
+            }
+            footer={
+              <ModalFooter textButton={"Update"} onSave={handleSave} />
+            }
+          ></ModalMaster>
+
           <div className="col-12 p-3 bg-light">
             <div className="d-flex justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm">
               {/* <!-- Header --> */}
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1>
-                  {data.id} - {data.sitename}{" "}
+                  {data.ticket_id} - {data.sitename}{" "}
                 </h1>
                 {/* <h1>001 - Dorolamo</h1> */}
               </div>
@@ -122,7 +181,11 @@ function TroubleTicket() {
                             <p class="mb-1">
                               <strong>Problem Category :</strong> SNMP Down
                             </p>
-                            <button class="btn btn-primary px-4 mt-2">
+                            <button
+                              class="btn btn-primary px-4 mt-2"
+                              data-bs-toggle="modal"
+                              data-bs-target="#updateTicketModal"
+                            >
                               REPLY
                             </button>
                           </div>
