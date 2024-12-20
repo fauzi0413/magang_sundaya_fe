@@ -58,9 +58,11 @@ function App() {
     <BrowserRouter>
       <div className="d-flex">
         <div
-          className={toggle ? "d-none" : "w-auto position-fixed overflow-auto bg-primary"}
+          className={
+            toggle ? "d-none" : "w-auto position-fixed overflow-auto bg-primary"
+          }
         >
-          <Sidebar />
+          <Sidebar Toggle={Toggle} />
         </div>
         <div className={toggle ? "d-none" : "invisible"}>
           <Sidebar />

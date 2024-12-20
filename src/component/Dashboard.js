@@ -8,12 +8,26 @@ import GeoMap from "./GeoMap";
 
 function Dashboard() {
   const [dataCard, setDataCard] = useState({});
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch(`/mock/dataCardDashboard.json`);
+  //     const jsonData = await response.json();
+  //     console.log(jsonData.data.snmpDown);
+  //     setDataCard(jsonData);
+  //   } catch (error) {
+  //     console.error("Ada kesalahan dalam mengambil data:", error);
+  //   }
+  // };
   const fetchData = async () => {
     try {
-      const response = await fetch(`/mock/dataCardDashboard.json`);
+      const response = await fetch(`http://192.168.3.171:5000/api/overview`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
       const jsonData = await response.json();
-      console.log(jsonData.data.snmpdown.site);
-      setDataCard(jsonData);
+      console.log(jsonData.data.snmpDown); // Log untuk debugging
+      setDataCard(jsonData); // Memperbarui state dengan data yang diambil
     } catch (error) {
       console.error("Ada kesalahan dalam mengambil data:", error);
     }
@@ -99,76 +113,66 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row justify-content-around">
             <CardBox
               title="SNMP Down"
               icon="bi-arrow-down-circle-fill"
-              iconcolor="success" //success = green , warning = yellow , danger = red
-              value={dataCard?.data?.snmpdown?.site}
-              descvalue="/ 122 site"
-              footnote={dataCard?.data?.snmpdown?.percentage}
+              iconcolor="danger" // Warna disesuaikan dengan konteks
+              value={dataCard?.data?.snmpDown?.count ?? 0}
+              descvalue={`/ ${dataCard?.data?.snmpDown?.amount ?? 0} site`}
+              footnote={`${dataCard?.data?.snmpDown?.percentage ?? 0} %`}
               route="snmpdown"
             />
 
             <CardBox
               title="Power Down"
               icon="bi-arrow-down-circle-fill"
-              iconcolor="success" //success = green , warning = yellow , danger = red
-              value={dataCard?.data?.powerdown?.site}
-              descvalue="/ 122 site"
-              footnote={dataCard?.data?.powerdown?.percentage}
+              iconcolor="warning"
+              value={dataCard?.data?.powerDown?.count ?? 0}
+              descvalue={`/ ${dataCard?.data?.powerDown?.amount ?? 0} site`}
+              footnote={`${dataCard?.data?.powerDown?.percentage ?? 0} %`}
               route="powerdown"
             />
 
             <CardBox
               title="Network Down"
               icon="bi-arrow-down-circle-fill"
-              iconcolor="success" //success = green , warning = yellow , danger = red
-              value={dataCard?.data?.networkdown?.site}
-              descvalue="/ 122 site"
-              footnote={dataCard?.data?.networkdown?.percentage}
+              iconcolor="danger"
+              value={dataCard?.data?.networkDown?.count ?? 0}
+              descvalue={`/ ${dataCard?.data?.networkDown?.amount ?? 0} site`}
+              footnote={`${dataCard?.data?.networkDown?.percentage ?? 0} %`}
               route="networkdown"
-            />
-
-            <CardBox
-              title="Site Down"
-              icon="bi-arrow-down-circle-fill"
-              iconcolor="success" //success = green , warning = yellow , danger = red
-              value={dataCard?.data?.sitedown?.site}
-              descvalue="/ 122 site"
-              footnote={dataCard?.data?.sitedown?.percentage}
-              route="sitedown"
             />
           </div>
 
           <div className="row justify-content-around">
             <CardBox
-              title="Warning SCC"
+              title="Site Down"
               icon="bi-arrow-down-circle-fill"
-              iconcolor="success" //success = green , warning = yellow , danger = red
-              value={dataCard?.data?.warningscc?.site}
-              descvalue="/ 122 site"
-              footnote={dataCard?.data?.warningscc?.percentage}
-              route="warningscc"
+              iconcolor="danger"
+              value={dataCard?.data?.siteDown?.count ?? 0}
+              descvalue={`/ ${dataCard?.data?.siteDown?.amount ?? 0} site`}
+              footnote={`${dataCard?.data?.siteDown?.percentage ?? 0} %`}
+              route="sitedown"
             />
 
             <CardBox
-              title="Warning SNMP"
-              icon="bi-arrow-down-circle-fill"
-              iconcolor="success" //success = green , warning = yellow , danger = red
-              value={dataCard?.data?.warningsnmp?.site}
-              descvalue="/ 122 site"
-              footnote={dataCard?.data?.warningsnmp?.percentage}
-              route="warningsnmp"
+              title="Warning"
+              icon="bi-exclamation-triangle-fill"
+              iconcolor="warning"
+              value={dataCard?.data?.warning?.count ?? 0}
+              descvalue={`/ ${dataCard?.data?.warning?.amount ?? 0} site`}
+              footnote={`${dataCard?.data?.warning?.percentage ?? 0} %`}
+              route="warning"
             />
 
             <CardBox
               title="Site Up"
               icon="bi-arrow-up-circle-fill"
-              iconcolor="success" //success = green , warning = yellow , danger = red
-              value={dataCard?.data?.siteup?.site}
-              descvalue="/ 122 site"
-              footnote={dataCard?.data?.siteup?.percentage}
+              iconcolor="success"
+              value={dataCard?.data?.siteUp?.count ?? 0}
+              descvalue={`/ ${dataCard?.data?.siteUp?.amount ?? 0} site`}
+              footnote={`${dataCard?.data?.siteUp?.percentage ?? 0} %`}
               route="siteup"
             />
           </div>

@@ -1,11 +1,42 @@
 {
+  "success": true,
+  "message": "Successfully",
   "data": {
-    "snmpdown": { "site": "19", "percentage": "10.9%" },
-    "powerdown": { "site": "99", "percentage": "10.9%" },
-    "networkdown": { "site": "99", "percentage": "10.9%" },
-    "sitedown": { "site": "99", "percentage": "10.9%" },
-    "warningscc": { "site": "19", "percentage": "10.9%" },
-    "warningsnmp": { "site": "19", "percentage": "10.9%" },
-    "siteup": { "site": "101", "percentage": "90.9%" }
+    "snmpDown": {
+      "label": "SNMP",
+      "count": 2,
+      "amount": 122,
+      "percentage": 1.64
+    },
+    "powerDown": {
+      "label": "Power",
+      "count": 1,
+      "amount": 122,
+      "percentage": 0.82
+    },
+    "networkDown": {
+      "label": "Network",
+      "count": 15,
+      "amount": 122,
+      "percentage": 12.3
+    },
+    "siteDown": {
+      "label": "Down",
+      "count": 18,
+      "amount": 122,
+      "percentage": 14.76
+    },
+    "warning": {
+      "label": "Warning",
+      "count": 0,
+      "amount": 122,
+      "percentage": 0
+    },
+    "siteUp": {
+      "label": "UP",
+      "count": 104,
+      "amount": 122,
+      "percentage": 85.25
+    }
   }
 }

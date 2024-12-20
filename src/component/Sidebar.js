@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import favicon from "../img/favicon.ico";
 
-function Sidebar() {
+function Sidebar({ Toggle }) {
   const [active, setActive] = useState(() => {
     const currentPath = window.location.pathname;
     if (currentPath === "/") return 1;
@@ -39,6 +39,7 @@ function Sidebar() {
             height={32}
           />
           <span className="fs-3">ECC Dashboard</span>
+          <i className="bi bi-justify justify-icon fs-1" onClick={Toggle}></i>
         </span>
 
         <hr className="text-primary mt-2" />
@@ -52,9 +53,7 @@ function Sidebar() {
               onClick={(e) => setActive(1)}
             >
               <i className="bi bi-card-heading fs-4 me-3"></i>
-              <span className="text-decoration-none p-1 fs-4">
-                Dashboard
-              </span>
+              <span className="text-decoration-none p-1 fs-4">Dashboard</span>
             </li>
           </Link>
 
