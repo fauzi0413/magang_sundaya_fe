@@ -9,7 +9,10 @@ const CardBox = ({title,icon,iconcolor,value,descvalue,footnote,route}) => {
         className="text-decoration-none"
         style={{ color: "inherit" }}
       >
-        <div className="justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm">
+        <div
+          className="justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm rounded-2"
+          style={{ width: "300px" }}
+        >
           <div>
             <h2>
               <span>{title}</span>

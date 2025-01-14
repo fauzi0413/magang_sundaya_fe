@@ -30,7 +30,7 @@ function Sidebar({ Toggle }) {
   return (
     <div className="sidebar d-flex bg-primary justify-content-between flex-column text-white ps-3 py-3 pe-5 p-3 vh-100">
       <div>
-        <span className="text-white text-decoration-none p-3">
+        <span className="text-white text-decoration-none p-3 invisible">
           <img
             src={favicon}
             alt="ECC Dashboard Icon"
@@ -39,11 +39,10 @@ function Sidebar({ Toggle }) {
             height={32}
           />
           <span className="fs-3">ECC Dashboard</span>
-          <i className="bi bi-justify justify-icon fs-1" onClick={Toggle}></i>
         </span>
 
-        <hr className="text-primary mt-2" />
-        <ul className="nav nav-pills flex-column mt-3">
+        <hr className="text-primary" />
+        <ul className="nav nav-pills flex-column">
           <Link
             to="/"
             className=" text-black text-decoration-none bg-white rounded"
