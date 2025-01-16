@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import favicon from "../img/favicon.ico";
 
-function Sidebar({ Toggle }) {
+function Sidebar() {
   const [active, setActive] = useState(() => {
     const currentPath = window.location.pathname;
     if (currentPath === "/") return 1;
@@ -354,7 +354,7 @@ function Sidebar({ Toggle }) {
               <ul className="flex-column pl-2 nav">
                 <li className="nav-item">
                   <Link
-                    to="/"
+                    to="/profil"
                     className="dropdown-item"
                     onClick={(e) => {
                       setActive(8);

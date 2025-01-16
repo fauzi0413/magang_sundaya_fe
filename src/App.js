@@ -31,20 +31,6 @@ function App() {
     setToggle(!toggle);
   }
 
-  // useEffect(() => {
-  //   const handleSize = () => {
-  //     if (window.innerWidth > 768) {
-  //       setToggle(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("resize", handleSize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleSize);
-  //   };
-  // }, []);
-
   return (
     <BrowserRouter>
       <div className="d-flex">
@@ -62,7 +48,6 @@ function App() {
           <div className="w-auto shadow-sm">
             <Navbar Toggle={Toggle} />
           </div>
-          {/* <Navbar Toggle={Toggle} /> */}
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/sitedown" element={<SiteDown />} />
@@ -84,9 +69,6 @@ function App() {
             {/* <Route path="/form" element={<Form />} /> */}
             {/* <Route path="/report" element={<Report />} /> */}
           </Routes>
-
-          {/* <Navbar /> */}
-          {/* <Home /> */}
         </div>
       </div>
     </BrowserRouter>
