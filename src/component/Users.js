@@ -5,7 +5,7 @@ function Users() {
     <>
       {/* <Navbar /> */}
       <div className="p-5 bg-light">
-        <div className="p-1 bg-white rounded p-4">
+        <div className=" bg-white rounded p-4">
           <table className="table caption-top ">
             <caption className="text-black fs-4">Recend Users</caption>
             <thead>

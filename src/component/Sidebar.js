@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import favicon from "../img/favicon.ico";
+// import warehouse from "./Warehouse/DashboardWarehouse";
 
 function Sidebar() {
   const [active, setActive] = useState(() => {
@@ -16,6 +17,7 @@ function Sidebar() {
 
   // Combine submenu states into a single array
   const [submenuOpenStates, setSubmenuOpenStates] = useState([
+    false,
     false,
     false,
     false,
@@ -400,8 +402,75 @@ function Sidebar() {
             </div>
           </li>
         </ul>
-      </div>
+      
+      <li
+            className={`mt-2 rounded bg-white text-black nav-item p-2 ${
+            submenuOpenStates[3] ? "show " : ""
+            }`}
+            onClick={() => toggleSubmenu(3)}
+          >
+            <i className="bi bi-cart-fill fs-4 me-3"></i>
+            <span className="text-decoration-none p-1 dropdown-toggle fs-4">
+            Warehouse Management
+            </span>
+            <div
+              className={`collapse ${submenuOpenStates[3] ? "show" : ""}`}
+              id="submenu1"
+              aria-expanded={submenuOpenStates[3]}
+            >
+              <ul className="flex-column pl-2 nav">
+                <li className="nav-item">
+                  <Link
+                    to="/isi Warehouse"
+                    className="dropdown-item"
+                    onClick={(e) => {
+                      setActive(8);
+                    }}
+                  >
+                    <span className="text-decoration-none p-4">
+                      <i className="bi bi-database-fill-up me-3 fs-4"></i>
+                      <span>Item Data</span>
+                    </span>
+                  </Link>
+                </li>
 
+                <li className="nav-item">
+                  <Link
+                    to="/Luar Warehouse"
+                    className="dropdown-item"
+                    onClick={(e) => {
+                      setActive(9);
+                    }}
+                  >
+                    <span className="text-decoration-none p-4">
+                      <i className="bi bi-person-plus-fill me-3 fs-4"></i>
+                      <span>external</span>
+                    </span>
+                  </Link> 
+                </li>
+
+                <li className="nav-item">
+                  <Link
+                    to="/"
+                    className="dropdown-item"
+                    onClick={(e) => {
+                      setActive(10);
+                    }}
+                  >
+                    <span className="text-decoration-none p-4">
+                      <i className="bi bi-clipboard-fill me-3 fs-4"></i>
+                      <span>Resource</span>
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </div>
+
+        
+
+      
       <div>
         <hr className="text-white" />
         <div className="nav-item p-2">

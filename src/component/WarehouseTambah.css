@@ -1,0 +1,27 @@
+      .container {
+            background-color: #fdfafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #fff;
+        }
+        .form-control, .form-select {
+            border-radius: 25px;
+            background-color: #d3d3d3;
+            border: none;
+            padding: 10px 20px;
+        }
+        .btn-primary {
+            border-radius: 25px;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+        }
+          

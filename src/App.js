@@ -3,13 +3,16 @@ import Navbar from "./component/Navbar";
 import React, { useState } from "react";
 import "./App.css";
 import Sidebar from "./component/Sidebar";
+
 import "bootstrap/dist/css/bootstrap.min.css";
+
 // import Home from "./component/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Users from "./component/Users";
 // import Orders from "./component/Orders";
 // import Form from "./component/Form";
 // import Report from "./component/Report";
+// import LoginForm from "./component/LoginForm";
 import Dashboard from "./component/Dashboard";
 import SiteDown from "./component/SiteDown";
 import SnmpDown from "./component/SnmpDown";
@@ -23,8 +26,14 @@ import TroubleTicket from "./component/TroubleTicket";
 import SLA1 from "./component/SLA1";
 import SLA2 from "./component/SLA2";
 import SLA3 from "./component/SLA3";
-import LoginPage from "./component/LoginPage";
+// import LoginPage from "./component/LoginPage";
 import ProfilePage from "./component/ProfilePage";
+import Warehouse from "./component/Warehouse";
+// import WarehouseDetail from "./component/WarehouseDetail";
+// import WarehouseTambah from "./component/WarehouseTambah";
+// import SuccesTambah from "./component/SuccesTambah";
+
+// import DashboardWarehouse from "./component/Warehouse/DashboardWarehouse";
 function App() {
   const [toggle, setToggle] = useState(true);
   function Toggle() {
@@ -62,8 +71,12 @@ function App() {
             <Route path="/sla1" element={<SLA1 />} />
             <Route path="/sla2" element={<SLA2 />} />
             <Route path="/sla3" element={<SLA3 />} />
-            <Route path="/login" element={<LoginPage />} />
+             {/* <Route path="/login" element={<LoginPage />} /> */}
             <Route path="/profil" element={<ProfilePage />} />
+            <Route path="/warehouse" element={<Warehouse />} /> 
+            {/* <Route path="/warehousedetail" element={<WarehouseDetail />} />
+            <Route path="/warehousetambah" element={<WarehouseTambah />} />
+            <Route path="/SuccesTambah" element={<SuccesTambah />} /> */}
             {/* <Route path="/users" element={<Users />} /> */}
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/form" element={<Form />} /> */}

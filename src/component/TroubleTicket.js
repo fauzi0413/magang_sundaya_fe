@@ -92,9 +92,9 @@ function TroubleTicket() {
                 <h1>
                   {data.ticket_id} - {data.sitename}{" "}
                 </h1>
-                {/* <h1>001 - Dorolamo</h1> */}
+                <h1>001 - Dorolamo</h1>
               </div>
-              {/* <button class="btn btn-warning">Create Ticket</button> */}
+              <button class="btn btn-warning">Create Ticket</button>
             </div>
           </div>
         </div>
