@@ -26,14 +26,19 @@ import TroubleTicket from "./component/TroubleTicket";
 import SLA1 from "./component/SLA1";
 import SLA2 from "./component/SLA2";
 import SLA3 from "./component/SLA3";
-// import LoginPage from "./component/LoginPage";
+import LoginPage from "./component/LoginPage";
 import ProfilePage from "./component/ProfilePage";
 import Warehouse from "./component/Warehouse";
-// import WarehouseDetail from "./component/WarehouseDetail";
-// import WarehouseTambah from "./component/WarehouseTambah";
-// import SuccesTambah from "./component/SuccesTambah";
+import WarehouseDetail from "./component/WarehouseDetail";
+import WarehouseTambah from "./component/WarehouseTambah";
+import SuccesTambah from "./component/SuccesTambah";
+import DetailBarang from "./component/DetailBarang";
+import History from "./component/History";
+import DashboardWarehouse from "./component/DashboardWarehouse";
+import Barcode from "./component/Barcode";
+import DashboardOM from "./component/DashboardOM";
 
-// import DashboardWarehouse from "./component/Warehouse/DashboardWarehouse";
+
 function App() {
   const [toggle, setToggle] = useState(true);
   function Toggle() {
@@ -71,12 +76,17 @@ function App() {
             <Route path="/sla1" element={<SLA1 />} />
             <Route path="/sla2" element={<SLA2 />} />
             <Route path="/sla3" element={<SLA3 />} />
-             {/* <Route path="/login" element={<LoginPage />} /> */}
+             <Route path="/login" element={<LoginPage />} />
             <Route path="/profil" element={<ProfilePage />} />
             <Route path="/warehouse" element={<Warehouse />} /> 
-            {/* <Route path="/warehousedetail" element={<WarehouseDetail />} />
+            <Route path="/warehousedetail" element={<WarehouseDetail />} />
             <Route path="/warehousetambah" element={<WarehouseTambah />} />
-            <Route path="/SuccesTambah" element={<SuccesTambah />} /> */}
+            <Route path="/SuccesTambah" element={<SuccesTambah />} />  
+            <Route path="/DetailBarang" element={<DetailBarang />} />
+            <Route path="/History" element={<History />} />
+            <Route path="/Dashboardwarehouse" element={<DashboardWarehouse />} />
+            <Route path="/Barcode" element={<Barcode />} />
+            <Route path="/DashboardOM" element={<DashboardOM />} />
             {/* <Route path="/users" element={<Users />} /> */}
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/form" element={<Form />} /> */}

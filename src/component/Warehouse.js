@@ -7,10 +7,10 @@ const Warehouse = () => {
     <div className="container">
       <div className="search-bar d-flex mb-4">
         <input type="text" placeholder="Search" className="form-control" />
-        <i className="fas fa-search icon"></i>
+        <i className="fas fa-search icon">🔎</i>
       </div>
       <div className="filter-buttons mb-4">
-        <button className="btn btn-light"><i className="fas fa-calendar-alt"></i></button>
+        <button className="btn btn-light"><i className="fas fa-calendar-alt">🗓️</i></button>
         <button className="btn btn-light">NOC</button>
         <button className="btn btn-primary active">oM</button>
       </div>

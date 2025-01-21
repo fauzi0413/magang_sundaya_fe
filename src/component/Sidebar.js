@@ -444,7 +444,7 @@ function Sidebar() {
                   >
                     <span className="text-decoration-none p-4">
                       <i className="bi bi-person-plus-fill me-3 fs-4"></i>
-                      <span>external</span>
+                      <span>History</span>
                     </span>
                   </Link> 
                 </li>
@@ -459,7 +459,7 @@ function Sidebar() {
                   >
                     <span className="text-decoration-none p-4">
                       <i className="bi bi-clipboard-fill me-3 fs-4"></i>
-                      <span>Resource</span>
+                      <span>Request</span>
                     </span>
                   </Link>
                 </li>
