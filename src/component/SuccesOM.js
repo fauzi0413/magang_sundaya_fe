@@ -1,18 +1,20 @@
+//setelah warehouse tambah berhasil
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaCheckCircle } from 'react-icons/fa';
-import './SuccesTambah.css';
+import { FaCheckCircle } from 'react-icons/fa'; // Importing an icon from react-icons
+import { useNavigate } from 'react-router-dom'; // Importing useNavigate for navigation
 
 const SuccesTambah = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const handleContinue = () => {
-        navigate('/DashboardWarehouse'); // Pindah ke halaman DashboardWarehouse
+        // Redirect to DashboardOM page
+        navigate('/DashboardOM');
     };
 
     const handleGoBack = () => {
-        navigate('/Warehouse'); // Pindah ke halaman Dashboard
+        // Redirect to ItemDataOM page
+        navigate('/ItemDataOM');
     };
 
     return (
@@ -27,7 +29,7 @@ const SuccesTambah = () => {
                             Continue
                         </button>
                         <button className="btn btn-secondary" onClick={handleGoBack}>
-                            Go Back
+                             Back
                         </button>
                     </div>
                 </div>

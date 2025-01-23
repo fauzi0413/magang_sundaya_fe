@@ -1,31 +1,35 @@
+//ini after ke send dari warehouse tambah
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaWarehouse, FaClipboardList } from 'react-icons/fa';
+import { FaWarehouse, FaClipboardList } from 'react-icons/fa'; // Importing icons
+import { useNavigate } from 'react-router-dom';
 
-const WarehouseTambah = () => {
-    const navigate = useNavigate();
+const TambahOM = () => {
     const [cluster, setCluster] = useState('');
     const [quantity, setQuantity] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const handleSubmit = (event) => {
         event.preventDefault();
         setError('');
 
+        // Basic validation
         if (!cluster || !quantity) {
             setError('All fields are required.');
             return;
         }
 
         setLoading(true);
-
         // Simulate a submission request
         setTimeout(() => {
             console.log('Submitting:', { cluster, quantity });
             setLoading(false);
-            navigate('/SuccesTambah'); // Pindah ke halaman SuccesTambah setelah submit
+            // Reset fields or redirect after successful submission
+            setCluster('');
+            setQuantity('');
+            navigate('/SuccesOM'); // Redirect to SuccessOM page
         }, 2000);
     };
 
@@ -76,4 +80,4 @@ const WarehouseTambah = () => {
     );
 };
 
-export default WarehouseTambah;
+export default TambahOM;

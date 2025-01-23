@@ -56,12 +56,7 @@ function DashboardOM() {
 
   return (
     <>
-      <div className="d-flex">
-        <div className="sidebar bg-light p-3">
-          <a className="nav-link active" href="#"><i className="fas fa-home"></i> Home</a>
-          <a className="nav-link" href="#"><i className="fas fa-layer-group"></i> Overview</a>
-          <a className="nav-link" href="#"><i className="fas fa-sync-alt"></i> Refresh</a>
-        </div>
+      <div className="d-flex flex-column vh-100">
         <div className="p-3 bg-light flex-grow-1">
           <div className="container">
             {/* SLA Comparison */}
@@ -82,7 +77,7 @@ function DashboardOM() {
                       <p className="text-danger">{error}</p>
                     ) : (
                       // <EChartsSLA inputData={dataSLA} />
-                      <p>SLA data loaded successfully!</p> // Placeholder for SLA chart
+                      <p>statistic load warehouse</p> // Placeholder for SLA chart
                     )}
                   </div>
                 </div>

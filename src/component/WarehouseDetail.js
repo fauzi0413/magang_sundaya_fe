@@ -1,7 +1,7 @@
-//harusnya warehouse tambah
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaBox, FaCalendarAlt, FaClipboardList } from 'react-icons/fa'; // Importing icons
+
 
 const WarehouseDetail = () => {
     const [sapCode, setSapCode] = useState('');
@@ -92,7 +92,7 @@ const WarehouseDetail = () => {
                     </div>
                     {error && <div className="alert alert-danger">{error}</div>}
                     <button className="btn btn-primary mt-3" type="submit">
-                        Send
+                        Confirm
                     </button>
                 </form>
             </div>

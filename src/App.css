@@ -189,3 +189,137 @@ body {
 .table tbody tr td {
   border: 1px solid #dee2e6;
 }
+
+/* Tampilan warehouse */
+.background {
+  background-color: #f4f4f4;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  padding: 30px;
+  max-width: 900px;
+  width: 20%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.toggle-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+.toggle-buttons button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+.toggle-buttons .active {
+  background-color: blue;
+  color: white;
+}
+/* .item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; 
+} */
+
+.item-card {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  align-items: center;
+  box-shadow: 50px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.item-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.plus-icon {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.status {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.status.yellow { background: yellow; }
+.status.red { background: red; }
+.status.green { background: green; }
+.add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: blue;
+  color: white;
+  font-size: 24px;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Tampilan warehousedetail */
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+.card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.card img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 auto 20px;
+}
+.card .form-control {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+.card .btn {
+  width: 100%;
+  border-radius: 20px;
+}
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+} */
+

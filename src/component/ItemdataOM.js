@@ -17,7 +17,7 @@ const Warehouse = () => {
   const navigate = useNavigate();
 
   const handleIncrement = (index) => {
-    navigate("/DetailBarang"); // Navigasi ke halaman DetailBarang
+    navigate("/DetailOM"); // Navigasi ke halaman DetailOM
   };
 
   const handleTabChange = (tab) => {
@@ -58,7 +58,7 @@ const Warehouse = () => {
             </div>
           ))}
         </div>
-        <button className="add-button" onClick={handleAddItem}>+</button>
+       
       </div>
     </div>
   );

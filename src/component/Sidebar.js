@@ -12,6 +12,7 @@ function Sidebar() {
     if (currentPath === "/orders") return 3;
     if (currentPath === "/form") return 4;
     if (currentPath === "/report") return 5;
+    if (currentPath === "/warehouse") return 6;
     return null;
   });
 
@@ -23,10 +24,17 @@ function Sidebar() {
     false,
   ]);
 
+  const [isWarehouseOpen, setIsWarehouseOpen] = useState(false);
+
   const toggleSubmenu = (index) => {
     const newStates = [...submenuOpenStates];
     newStates[index] = !newStates[index];
     setSubmenuOpenStates(newStates);
+  };
+
+  const toggleWarehouseSubmenu = () => {
+    setIsWarehouseOpen(!isWarehouseOpen);
+    // setIsProfileOpen(false); // Close Profile submenu if it's open
   };
 
   return (
@@ -402,73 +410,43 @@ function Sidebar() {
             </div>
           </li>
         </ul>
-      
-      <li
-            className={`mt-2 rounded bg-white text-black nav-item p-2 ${
-            submenuOpenStates[3] ? "show " : ""
-            }`}
-            onClick={() => toggleSubmenu(3)}
+        <li
+            className={`mt-2 rounded bg-white text-black nav-item p-2`}
+            onClick={toggleWarehouseSubmenu}
           >
             <i className="bi bi-cart-fill fs-4 me-3"></i>
             <span className="text-decoration-none p-1 dropdown-toggle fs-4">
-            Warehouse Management
+              Warehouse Management
             </span>
-            <div
-              className={`collapse ${submenuOpenStates[3] ? "show" : ""}`}
-              id="submenu1"
-              aria-expanded={submenuOpenStates[3]}
-            >
+            <div className={`collapse ${isWarehouseOpen ? "show" : ""}`}>
               <ul className="flex-column pl-2 nav">
                 <li className="nav-item">
-                  <Link
-                    to="/isi Warehouse"
-                    className="dropdown-item"
-                    onClick={(e) => {
-                      setActive(8);
-                    }}
-                  >
+                  <Link to="/Warehouse" className="dropdown-item" onClick={() => setActive(8)}>
                     <span className="text-decoration-none p-4">
                       <i className="bi bi-database-fill-up me-3 fs-4"></i>
                       <span>Item Data</span>
                     </span>
                   </Link>
                 </li>
-
                 <li className="nav-item">
-                  <Link
-                    to="/Luar Warehouse"
-                    className="dropdown-item"
-                    onClick={(e) => {
-                      setActive(9);
-                    }}
-                  >
+                  <Link to="/History" className="dropdown-item" onClick={() => setActive(9)}>
                     <span className="text-decoration-none p-4">
                       <i className="bi bi-person-plus-fill me-3 fs-4"></i>
                       <span>History</span>
                     </span>
-                  </Link> 
+                  </Link>
                 </li>
-
-                <li className="nav-item">
-                  <Link
-                    to="/"
-                    className="dropdown-item"
-                    onClick={(e) => {
-                      setActive(10);
-                    }}
-                  >
+                {/* <li className="nav-item">
+                  <Link to="/" className="dropdown-item" onClick={() => setActive(10)}>
                     <span className="text-decoration-none p-4">
                       <i className="bi bi-clipboard-fill me-3 fs-4"></i>
                       <span>Request</span>
                     </span>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </li>
-        </div>
-
-        
 
       
       <div>
@@ -482,7 +460,12 @@ function Sidebar() {
           </span>
         </div>
       </div>
-    </div>
+    </div>        
+       </div>
+        
+        
+
+          
   );
 }
 

@@ -37,6 +37,13 @@ import History from "./component/History";
 import DashboardWarehouse from "./component/DashboardWarehouse";
 import Barcode from "./component/Barcode";
 import DashboardOM from "./component/DashboardOM";
+import ItemdataOM from "./component/ItemdataOM";
+import SidebarOM from "./component/SidebarOM";
+import  HistoryOM from "./component/HistoryOM";
+import DetailOM from "./component/DetailOM";
+import TambahOM from "./component/TambahOM";
+import SuccesOM from "./component/SuccesOM";
+import BarcodeOM from "./component/BarcodeOM";
 
 
 function App() {
@@ -76,7 +83,7 @@ function App() {
             <Route path="/sla1" element={<SLA1 />} />
             <Route path="/sla2" element={<SLA2 />} />
             <Route path="/sla3" element={<SLA3 />} />
-             <Route path="/login" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/profil" element={<ProfilePage />} />
             <Route path="/warehouse" element={<Warehouse />} /> 
             <Route path="/warehousedetail" element={<WarehouseDetail />} />
@@ -87,6 +94,13 @@ function App() {
             <Route path="/Dashboardwarehouse" element={<DashboardWarehouse />} />
             <Route path="/Barcode" element={<Barcode />} />
             <Route path="/DashboardOM" element={<DashboardOM />} />
+            <Route path="/ItemdataOM" element={<ItemdataOM />} />
+            <Route path="/SidebarOM" element={<SidebarOM />} />
+            <Route path="/HistoryOM" element={<HistoryOM />} />
+            <Route path="/DetailOM" element={<DetailOM />} />
+            <Route path="/TambahOM" element={<TambahOM />} />
+            <Route path="/SuccesOM" element={<SuccesOM />} />
+            <Route path="/BarcodeOM" element={<BarcodeOM />} />
             {/* <Route path="/users" element={<Users />} /> */}
             {/* <Route path="/orders" element={<Orders />} /> */}
             {/* <Route path="/form" element={<Form />} /> */}
