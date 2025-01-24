@@ -191,7 +191,7 @@ body {
 }
 
 /* Tampilan warehouse */
-.background {
+.backgroundwarehouse {
   background-color: #f4f4f4;
   padding: 100px;
   display: flex;
@@ -206,7 +206,7 @@ body {
   max-width: 900px;
   width: 20%;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
 }
 .search-bar {
   display: flex;
@@ -248,7 +248,7 @@ body {
   padding: 10px;
   border-radius: 10px;
   align-items: center;
-  box-shadow: 50px 2px 5px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 50px 2px 5px rgba(0, 0, 0, 0.1); */
 }
 .item-qty {
   display: flex;
@@ -286,7 +286,7 @@ body {
 /* Tampilan warehousedetail */
 /* .container {
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
   height: 100vh;
   background-color: #f8f9fa;

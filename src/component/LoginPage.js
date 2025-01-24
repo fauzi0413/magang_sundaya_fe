@@ -1,74 +1,61 @@
-//login
-import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './login.css'; // Ensure this path is correct
-import { FaUser , FaLock } from 'react-icons/fa'; // Importing icons from react-icons
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import sundayaLogo from './asset1.png';
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setError('');
-        if (!email || !password) {
-            setError('Email and Password are required');
-            return;
+    const handleLogin = () => {
+        if (username === 'noc' && password === 'noc123') {
+            navigate('/dashboard');
+        } else if (username === 'om' && password === 'om123') {
+            navigate('/sidebarOM');
+        } else {
+            setError('Invalid username or password');
         }
-        setLoading(true);
-        // Simulate a login request
-        setTimeout(() => {
-            console.log('Logging in with:', { email, password });
-            setLoading(false);
-            // Reset fields or redirect after successful login
-        }, 2000);
     };
 
     return (
-        <div className="bg-primary vh-100 d-flex justify-content-center align-items-center">
-            <div className="container">
-                <div className="login-form bg-white p-4 rounded shadow">
-                    <div className="text-center">
-                    <img src="Asset 1.png" alt="My Image" style={{ width: "100%", maxWidth: "400px", height: "auto" }} />
-                    </div>
-                    <h2 className="text-center mb-3"></h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group mb-2">
-                            <label htmlFor="username">Username</label>
-                            <div className="input-group">
-                                <span className="input-group-text"><FaUser  /></span>
-                                <input
-                                    type="text"
-                                    id="username"
-                                    className="form-control"
-                                    placeholder="Username"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group mb-2">
-                            <label htmlFor="password">Password</label>
-                            <div className="input-group">
-                                <span className="input-group-text"><FaLock /></span>
-                                <input
-                                    type="password"
-                                    id="password"
-                                    className="form-control"
-                                    placeholder="Password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                />
-                            </div>
-                        </div>
-                        {error && <div className="alert alert-danger">{error}</div>}
-                        <button className="btn btn-primary rounded w-100" type="submit" disabled={loading}>
-                            {loading ? 'Loading...' : 'Login'}
-                        </button>
-                    </form>
-                </div>
+        <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            height: '100vh', 
+            backgroundColor: '#0066ff' 
+        }}>
+            <div style={{ 
+                backgroundColor: 'white', 
+                padding: '40px', 
+                borderRadius: '10px', 
+                textAlign: 'center', 
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                width: '900px' 
+            }}>
+                <img src="/Asset 1.png" alt="Sundaya Logo" style={{ width: '400px', height: '80px', marginBottom: '20px' }} />
+                {error && <p style={{ color: 'red', fontSize: '14px' }}>{error}</p>}
+                <input 
+                    type="text" 
+                    placeholder="Username" 
+                    value={username} 
+                    onChange={(e) => setUsername(e.target.value)} 
+                    style={{ display: 'block', margin: '10px auto', padding: '12px', width: '90%', borderRadius: '20px', border: '1px solid #ccc' }}
+                />
+                <input 
+                    type="password" 
+                    placeholder="Password" 
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    style={{ display: 'block', margin: '10px auto', padding: '12px', width: '90%', borderRadius: '20px', border: '1px solid #ccc' }}
+                />
+                <button onClick={handleLogin} style={{ padding: '12px 20px', background: '#0066ff', color: 'white', border: 'none', cursor: 'pointer', marginTop: '15px', width: '40%', borderRadius: '20px', fontSize: '16px', fontWeight: 'bold' }}>
+                    Login
+                </button>
+                {/* <p style={{ marginTop: '15px', fontSize: '14px', color: '#555' }}>
+                    Don't have an account? <a href="#" style={{ color: '#0066ff', textDecoration: 'none', fontWeight: 'bold' }}>Sign up</a> */}
+                {/* </p> */}
             </div>
         </div>
     );

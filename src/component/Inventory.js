@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaSearch } from 'react-icons/fa'; // Importing search icon
+import { FaSearch, FaPlus } from 'react-icons/fa'; // Importing icons
 
-const HistoryOM = () => {
+const Inventory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('All'); // State for filtering status
+  const navigate = useNavigate();
 
   // Sample data for the table
   const data = [
@@ -31,10 +33,15 @@ const HistoryOM = () => {
     setSearchTerm(e.target.value);
   };
 
+  // Navigate to InputInventory page
+  const handleAddItem = () => {
+    navigate('/InputInventory');
+  };
+
   return (
     <div className="container mt-3">
-      {/* Search Bar */}
-      <div className="search-container d-flex mb-3">
+      {/* Search Bar & Add Button */}
+      <div className="d-flex mb-3">
         <input 
           type="text" 
           className="form-control search-bar me-2" 
@@ -42,8 +49,11 @@ const HistoryOM = () => {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <button className="btn btn-info">
+        <button className="btn btn-secondary me-2">
           <FaSearch /> Search
+        </button>
+        <button className="btn btn-primary d-flex align-items-center" onClick={handleAddItem} style={{ padding: '10px' }}>
+          <FaPlus size={16} style={{ marginRight: '5px' }} /> Add
         </button>
       </div>
 
@@ -108,4 +118,4 @@ const HistoryOM = () => {
   );
 };
 
-export default HistoryOM;
+export default Inventory;

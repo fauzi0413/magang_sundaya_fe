@@ -36,6 +36,8 @@ import DetailBarang from "./component/DetailBarang";
 import History from "./component/History";
 import DashboardWarehouse from "./component/DashboardWarehouse";
 import Barcode from "./component/Barcode";
+import Inventory from "./component/Inventory";
+import InputInventory from "./component/InputInventory";
 import DashboardOM from "./component/DashboardOM";
 import ItemdataOM from "./component/ItemdataOM";
 import SidebarOM from "./component/SidebarOM";
@@ -44,6 +46,8 @@ import DetailOM from "./component/DetailOM";
 import TambahOM from "./component/TambahOM";
 import SuccesOM from "./component/SuccesOM";
 import BarcodeOM from "./component/BarcodeOM";
+
+
 
 
 function App() {
@@ -93,6 +97,8 @@ function App() {
             <Route path="/History" element={<History />} />
             <Route path="/Dashboardwarehouse" element={<DashboardWarehouse />} />
             <Route path="/Barcode" element={<Barcode />} />
+            <Route path="/Inventory" element={<Inventory />} />
+            <Route path="/InputInventory" element={<InputInventory />} />
             <Route path="/DashboardOM" element={<DashboardOM />} />
             <Route path="/ItemdataOM" element={<ItemdataOM />} />
             <Route path="/SidebarOM" element={<SidebarOM />} />

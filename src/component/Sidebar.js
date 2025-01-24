@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import favicon from "../img/favicon.ico";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 // import warehouse from "./Warehouse/DashboardWarehouse";
 
 function Sidebar() {
@@ -411,46 +413,70 @@ function Sidebar() {
           </li>
         </ul>
         <li
-            className={`mt-2 rounded bg-white text-black nav-item p-2`}
-            onClick={toggleWarehouseSubmenu}
-          >
-            <i className="bi bi-cart-fill fs-4 me-3"></i>
-            <span className="text-decoration-none p-1 dropdown-toggle fs-4">
-              Warehouse Management
-            </span>
-            <div className={`collapse ${isWarehouseOpen ? "show" : ""}`}>
-              <ul className="flex-column pl-2 nav">
-                <li className="nav-item">
-                  <Link to="/Warehouse" className="dropdown-item" onClick={() => setActive(8)}>
-                    <span className="text-decoration-none p-4">
-                      <i className="bi bi-database-fill-up me-3 fs-4"></i>
-                      <span>Item Data</span>
-                    </span>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/History" className="dropdown-item" onClick={() => setActive(9)}>
-                    <span className="text-decoration-none p-4">
-                      <i className="bi bi-person-plus-fill me-3 fs-4"></i>
-                      <span>History</span>
-                    </span>
-                  </Link>
-                </li>
-                {/* <li className="nav-item">
-                  <Link to="/" className="dropdown-item" onClick={() => setActive(10)}>
-                    <span className="text-decoration-none p-4">
-                      <i className="bi bi-clipboard-fill me-3 fs-4"></i>
-                      <span>Request</span>
-                    </span>
-                  </Link>
-                </li> */}
-              </ul>
-            </div>
-          </li>
+  className={`mt-2 rounded bg-white text-black nav-item p-2 ${
+    isWarehouseOpen ? "show" : ""
+  }`}
+  onClick={() => {
+    setIsWarehouseOpen(true); // Open the dropdown when clicked
+    setActive(8); // Set the active state for Warehouse Management
+  }}
+>
+<svg width="30" height="30" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4H20V6H4V4ZM4 8H20V10H4V8ZM2 20V12H22V20H2ZM4 14V18H20V14H4Z"/>
+</svg>
+  {/* <i className="bi bi-cart-fill fs-4 me-3"></i> */}
+  <span className="text-decoration-none p-1 dropdown-toggle fs-4">
+    Warehouse Management
+  </span>
+  <div className={`collapse ${isWarehouseOpen ? "show" : ""}`}>
+    <ul className="flex-column pl-2 nav">
+      <li className="nav-item">
+        <Link
+          to="/Warehouse"
+          className={`dropdown-item ${active === 8 ? "active" : ""}`}
+          onClick={() => setActive(8)}
+        >
+          <span className="text-decoration-none p-4">
+            <i className="bi bi-database-fill-gear me-3 fs-4"></i>
+            <span>Item Data</span>
+          </span>
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/History"
+          className={`dropdown-item ${active === 9 ? "active" : ""}`}
+          onClick={() => setActive(9)}
+        >
+          <span className="text-decoration-none p-4">
+            <i className="bi bi-person-fill-gear me-3 fs-4"></i>
+            <span>History</span>
+          </span>
+        </Link>
+      </li>
 
+      <li className="nav-item">
+        <Link
+          to="/Inventory"
+          className={`dropdown-item ${active === 9 ? "active" : ""}`}
+          onClick={() => setActive(9)}
+        >
+          <span className="text-decoration-none p-4">
+            <i className="bi bi-clipboard-fill me-3 fs-4"></i>
+            <span>Inventory</span>
+          </span>
+        </Link>
+      </li>
+    </ul>
+  </div>
+</li>
+  
+  
       
       <div>
-        <hr className="text-white" />
+            
+       </div>
+       <hr className="text-white" />
         <div className="nav-item p-2">
           <span className="text-white text-decoration-none p-1">
             <i className="bi bi-person-circle me-3 fs-4"></i>
@@ -460,9 +486,7 @@ function Sidebar() {
           </span>
         </div>
       </div>
-    </div>        
-       </div>
-        
+    </div>    
         
 
           

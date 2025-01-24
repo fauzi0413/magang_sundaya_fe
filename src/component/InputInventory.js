@@ -1,10 +1,9 @@
-//warehouse tambah barang detail
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaBox, FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
 
-const WarehouseDetail = () => {
+const InputInventory = () => {
     const [sapCode, setSapCode] = useState('');
     const [itemName, setItemName] = useState('');
     const [totalItems, setTotalItems] = useState('');
@@ -106,4 +105,4 @@ const WarehouseDetail = () => {
     );
 };
 
-export default WarehouseDetail;
+export default InputInventory;

@@ -29,7 +29,7 @@ const Warehouse = () => {
   };
 
   return (
-    <div className="background/warehouse.css">
+    <div className="backgroundwarehouse">
       <div className="container">
         <div className="search-bar">
           <input type="text" placeholder="Search" />
