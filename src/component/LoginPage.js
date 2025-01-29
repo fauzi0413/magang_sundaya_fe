@@ -10,7 +10,7 @@ const LoginPage = () => {
 
     const handleLogin = () => {
         if (username === 'noc' && password === 'noc123') {
-            navigate('/dashboard');
+            navigate('/');
         } else if (username === 'om' && password === 'om123') {
             navigate('/sidebarOM');
         } else {

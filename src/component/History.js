@@ -37,13 +37,13 @@ const History = () => {
       <div className="search-container d-flex mb-3">
         <input 
           type="text" 
-          className="form-control search-bar me-2" 
+          className="form-control me-2 flex-grow-1" // flex-grow-1 agar input mengisi ruang
           placeholder="Find the items you need" 
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <button className="btn btn-info">
-          <FaSearch /> Search
+        <button className="btn btn-info d-flex align-items-center">
+          <FaSearch className="me-1" /> Search
         </button>
       </div>
 

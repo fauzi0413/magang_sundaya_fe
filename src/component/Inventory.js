@@ -41,19 +41,22 @@ const Inventory = () => {
   return (
     <div className="container mt-3">
       {/* Search Bar & Add Button */}
-      <div className="d-flex mb-3">
+      <div className="d-flex mb-3 align-items-center">
         <input 
           type="text" 
           className="form-control search-bar me-2" 
           placeholder="Find the items you need" 
           value={searchTerm}
           onChange={handleSearchChange}
+          style={{ height: '40px' }} // Pastikan input memiliki tinggi yang sama
         />
-        <button className="btn btn-secondary me-2">
-          <FaSearch /> Search
+        <button className="btn btn-secondary me-2 d-flex align-items-center justify-content-center"
+          style={{ height: '30px', width: '120px' }}>
+          <FaSearch className="me-1" /> Search
         </button>
-        <button className="btn btn-primary d-flex align-items-center" onClick={handleAddItem} style={{ padding: '10px' }}>
-          <FaPlus size={16} style={{ marginRight: '5px' }} /> Add
+        <button className="btn btn-primary d-flex align-items-center justify-content-center"
+          onClick={handleAddItem} style={{ height: '30px', width: '120px' }}>
+          <FaPlus className="me-1" /> Add
         </button>
       </div>
 

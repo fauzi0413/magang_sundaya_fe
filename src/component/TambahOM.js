@@ -37,10 +37,10 @@ const TambahOM = () => {
         <div className="d-flex justify-content-center align-items-center vh-100">
             <div className="card shadow" style={{ width: '800px', borderRadius: '10px', height: '500px' }}>
                 <div className="login-form p-4">
-                    <h3 className="text-center mb-4">Add Warehouse Item</h3>
+                    <h3 className="text-center mb-4">p</h3>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label htmlFor="cluster" className="form-label">Nama Cluster</label>
+                            <label htmlFor="cluster" className="form-label">Nama Site</label>
                             <div className="input-group">
                                 <span className="input-group-text"><FaWarehouse /></span>
                                 <select
@@ -49,9 +49,9 @@ const TambahOM = () => {
                                     value={cluster}
                                     onChange={(e) => setCluster(e.target.value)}
                                 >
-                                    <option value="">Select Cluster</option>
-                                    <option value="1">Cluster 1</option>
-                                    <option value="2">Cluster 2</option>
+                                    <option value="">Select Site</option>
+                                    <option value="1">site 1</option>
+                                    <option value="2">site 2</option>
                                 </select>
                             </div>
                         </div>

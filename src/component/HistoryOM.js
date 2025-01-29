@@ -35,17 +35,17 @@ const HistoryOM = () => {
     <div className="container mt-3">
       {/* Search Bar */}
       <div className="search-container d-flex mb-3">
-        <input 
-          type="text" 
-          className="form-control search-bar me-2" 
-          placeholder="Find the items you need" 
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-        <button className="btn btn-info">
-          <FaSearch /> Search
-        </button>
-      </div>
+              <input 
+                type="text" 
+                className="form-control me-2 flex-grow-1" // flex-grow-1 agar input mengisi ruang
+                placeholder="Find the items you need" 
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
+              <button className="btn btn-info d-flex align-items-center">
+                <FaSearch className="me-1" /> Search
+              </button>
+            </div>
 
       {/* Filter Buttons */}
       <div className="d-flex justify-content-center mb-3">

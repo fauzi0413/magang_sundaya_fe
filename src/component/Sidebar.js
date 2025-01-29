@@ -4,7 +4,6 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import favicon from "../img/favicon.ico";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
-// import warehouse from "./Warehouse/DashboardWarehouse";
 
 function Sidebar() {
   const [active, setActive] = useState(() => {
@@ -18,14 +17,7 @@ function Sidebar() {
     return null;
   });
 
-  // Combine submenu states into a single array
-  const [submenuOpenStates, setSubmenuOpenStates] = useState([
-    false,
-    false,
-    false,
-    false,
-  ]);
-
+  const [submenuOpenStates, setSubmenuOpenStates] = useState([false, false, false, false]);
   const [isWarehouseOpen, setIsWarehouseOpen] = useState(false);
 
   const toggleSubmenu = (index) => {
@@ -36,11 +28,10 @@ function Sidebar() {
 
   const toggleWarehouseSubmenu = () => {
     setIsWarehouseOpen(!isWarehouseOpen);
-    // setIsProfileOpen(false); // Close Profile submenu if it's open
   };
 
   return (
-    <div className="sidebar d-flex bg-primary justify-content-between flex-column text-white ps-3 py-3 pe-5 p-3 vh-100">
+    <div className="sidebar d-flex custom-bg justify-content-between flex-column text-black ps-3 py-3 pe-5 p-3 vh-100">
       <div>
         <span className="text-white text-decoration-none p-3 invisible">
           <img
@@ -55,20 +46,14 @@ function Sidebar() {
 
         <hr className="text-primary" />
         <ul className="nav nav-pills flex-column">
-          <Link
-            to="/"
-            className=" text-black text-decoration-none bg-white rounded"
-          >
-            <li
-              className={active === 1 ? "active nav-item p-2" : "nav-item p-2"}
-              onClick={(e) => setActive(1)}
-            >
+          <Link to="/" className=" text-black text-decoration-none bg-white rounded">
+            <li className={active === 1 ? "active nav-item p-2" : "nav-item p-2"} onClick={(e) => setActive(1)}>
               <i className="bi bi-card-heading fs-4 me-3"></i>
               <span className="text-decoration-none p-1 fs-4">Dashboard</span>
             </li>
           </Link>
-
-          <li
+          {/* Additional sidebar items... */}
+         <li
             className={` mt-2 rounded bg-white text-black nav-item p-2 ${
               submenuOpenStates[0] ? "show " : ""
             }`}
@@ -486,11 +471,8 @@ function Sidebar() {
           </span>
         </div>
       </div>
-    </div>    
-        
-
-          
+    </div>   
   );
-}
+};
 
 export default Sidebar;
