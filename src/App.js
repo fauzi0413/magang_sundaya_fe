@@ -38,6 +38,7 @@ import DashboardWarehouse from "./component/DashboardWarehouse";
 import Barcode from "./component/Barcode";
 import Inventory from "./component/Inventory";
 import InputInventory from "./component/InputInventory";
+import EditInventory from "./component/EditInventory";
 import DashboardOM from "./component/DashboardOM";
 import ItemdataOM from "./component/ItemdataOM";
 import SidebarOM from "./component/SidebarOM";
@@ -46,9 +47,7 @@ import DetailOM from "./component/DetailOM";
 import TambahOM from "./component/TambahOM";
 import SuccesOM from "./component/SuccesOM";
 import BarcodeOM from "./component/BarcodeOM";
-
-
-
+import ProtectedRoute from "./component/ProtectedRoute";
 
 function App() {
   const [toggle, setToggle] = useState(true);
@@ -69,12 +68,27 @@ function App() {
         <div className={toggle ? "d-none" : "invisible"}>
           <Sidebar />
         </div>
-        <div className="col overflow-auto">
+        <div className="overflow-auto col">
           <div className="w-auto shadow-sm">
             <Navbar Toggle={Toggle} />
           </div>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/login" element={<LoginPage />} />
+              
+            <Route path="/" element={
+              <ProtectedRoute requiredRole="admin">
+                <Dashboard />
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/SidebarOM" element={<SidebarOM />} />
+            
+            <Route path="/Dashboardwarehouse" element={
+              <ProtectedRoute requiredRole="management">
+                <DashboardWarehouse />
+              </ProtectedRoute>
+            } />
+            
             <Route path="/sitedown" element={<SiteDown />} />
             <Route path="/snmpdown" element={<SnmpDown />} />
             <Route path="/powerdown" element={<PowerDown />} />
@@ -87,7 +101,6 @@ function App() {
             <Route path="/sla1" element={<SLA1 />} />
             <Route path="/sla2" element={<SLA2 />} />
             <Route path="/sla3" element={<SLA3 />} />
-            <Route path="/login" element={<LoginPage />} />
             <Route path="/profil" element={<ProfilePage />} />
             <Route path="/warehouse" element={<Warehouse />} /> 
             <Route path="/warehousedetail" element={<WarehouseDetail />} />
@@ -95,13 +108,12 @@ function App() {
             <Route path="/SuccesTambah" element={<SuccesTambah />} />  
             <Route path="/DetailBarang" element={<DetailBarang />} />
             <Route path="/History" element={<History />} />
-            <Route path="/Dashboardwarehouse" element={<DashboardWarehouse />} />
             <Route path="/Barcode" element={<Barcode />} />
             <Route path="/Inventory" element={<Inventory />} />
-            <Route path="/InputInventory" element={<InputInventory />} />
+            <Route path="/inventory/create" element={<InputInventory />} />
+            <Route path="/inventory/edit/:id" element={<EditInventory />} />
             <Route path="/DashboardOM" element={<DashboardOM />} />
             <Route path="/ItemdataOM" element={<ItemdataOM />} />
-            <Route path="/SidebarOM" element={<SidebarOM />} />
             <Route path="/HistoryOM" element={<HistoryOM />} />
             <Route path="/DetailOM" element={<DetailOM />} />
             <Route path="/TambahOM" element={<TambahOM />} />
@@ -118,4 +130,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;

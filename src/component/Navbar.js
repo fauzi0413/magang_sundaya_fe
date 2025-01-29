@@ -7,7 +7,24 @@ import { useNavigate } from "react-router-dom";
 function Navbar({ Toggle }) {
   const [visible, setVisible] = useState(true);
   const [currentTime, setCurrentTime] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
   let timeoutId;
+
+  useEffect(() => {
+    // Periksa autentikasi dari localStorage
+    const authData = localStorage.getItem("auth");
+    setIsAuthenticated(!!authData); // Jika ada authData, berarti user terautentikasi
+}, []);
+
+const logout = () => {
+    localStorage.removeItem("auth"); // Clear user data
+    setIsAuthenticated(false); // Update state autentikasi
+    setTimeout(() => {
+      window.location.reload();
+    });
+    navigate("/login"); // Redirect ke login
+    };
 
   const formatTime = () => {
     const now = new Date();
@@ -35,7 +52,7 @@ function Navbar({ Toggle }) {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg custom-bg navbar-dark fixed-top">
+    <nav className="navbar navbar-expand-lg custom-bg navbar-dark fixed-top" style={{ height: "80px" }}>
       <span className="text-white text-decoration-none">
         <img
           src={`${process.env.PUBLIC_URL}/white.png`}
@@ -47,6 +64,7 @@ function Navbar({ Toggle }) {
         {/* <span className="fs-3"></span> */}
       </span>
 
+      {isAuthenticated && (
       <a
         className={`navbar-brand ms-2 ${visible ? "d-block" : "d-none"}`}
         onClick={Toggle}
@@ -54,10 +72,12 @@ function Navbar({ Toggle }) {
       >
         <i className="bi bi-justify justify-icon fs-1"></i>
       </a>
+      )}
 
       <div className="ms-auto text-white me-3">
         <strong>{currentTime}</strong>
       </div>
+      
       <button
         className="navbar-toggler"
         type="button"
@@ -69,6 +89,7 @@ function Navbar({ Toggle }) {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
+      {isAuthenticated && (
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           <li className="nav-item">
@@ -82,12 +103,13 @@ function Navbar({ Toggle }) {
             </button>
           </li>
           <li className="nav-item">
-            <button className="btn text-white" style={{ background: 'none', border: 'none' }}>
+            <button className="btn text-white" style={{ background: 'none', border: 'none' }} onClick={logout}>
               <LogOut size={23} /> Logout
             </button>
           </li>
         </ul>
-      </div>
+      </div>  
+      )}
     </nav>
   );
 }

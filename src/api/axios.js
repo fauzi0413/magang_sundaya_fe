@@ -42,9 +42,45 @@ export const getInventory = (callback) => {
   })
 }
 
-export const postInventory = (data, callback) => {
+export const getInventoryById = (id, callback) => {
   axios
-  .post("http://localhost:2000/inventory", data)
+  .get(`http://localhost:2000/inventory/${id}`)  
+  .then((res) => {
+    callback(res.data)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+export const postInventory = async (payload, callback) => {
+  try {
+      const response = await axios.post('http://localhost:2000/inventory', payload, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      callback(response.data); // Jika sukses, panggil callback
+  } catch (error) {
+      console.error('Gagal mengirim data:', error);
+  }
+};
+
+export const putInventory = async (id, payload, callback) => {
+  try {
+      const response = await axios.put(`http://localhost:2000/inventory/${id}`, payload, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      callback(response.data); // Jika sukses, panggil callback
+  } catch (error) {
+      console.error('Gagal mengirim data:', error);
+  }
+};
+
+export const deleteInventoryById = (id, callback) => {
+  axios
+  .delete(`http://localhost:2000/inventory/${id}`)  
   .then((res) => {
     callback(res.data)
   }).catch((err) => {

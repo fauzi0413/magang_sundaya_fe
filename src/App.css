@@ -27,8 +27,8 @@
   color: #C42B2B;
 }
 
-body {
-  padding-top: 80px; /* Height of navbar (default Bootstrap) */
+.container{
+  padding-top: 80px !important;
 }
 
 @keyframes App-logo-spin {
@@ -271,4 +271,284 @@ body {
   height: 60px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+/* tampilan Warehouse  */
+.warehouse-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.warehouse-content {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.warehouse-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.warehouse-search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.warehouse-search-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 3rem 0 1.5rem;
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.warehouse-search-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.warehouse-calendar-button {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: none;
+  background-color: white;
+  color: #6b7280;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.warehouse-calendar-button:hover {
+  background-color: #f3f4f6;
+}
+
+.warehouse-toggle {
+  background-color: #3b82f6;
+  border-radius: 9999px;
+  padding: 0.25rem;
+  display: flex;
+}
+
+.warehouse-toggle-button {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  font-size: 0.875rem;
+  color: white;
+  background: none;
+  cursor: pointer;
+}
+
+.warehouse-toggle-active {
+  background-color: white;
+  color: #3b82f6;
+}
+
+/* Calendar Styles */
+.warehouse-calendar {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.warehouse-calendar-sidebar {
+  width: 200px;
+  border-right: 1px solid #e5e7eb;
+  padding-right: 1rem;
+}
+
+.warehouse-calendar-option {
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.warehouse-calendar-option:hover {
+  background-color: #f3f4f6;
+}
+
+.warehouse-calendar-option-active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.warehouse-calendar-main {
+  flex: 1;
+}
+
+.warehouse-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.warehouse-calendar-nav {
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.warehouse-calendar-title {
+  font-weight: 500;
+}
+
+.warehouse-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.warehouse-calendar-weekday {
+  font-size: 0.875rem;
+  color: #6b7280;
+  padding: 0.5rem;
+}
+
+.warehouse-calendar-day {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.warehouse-calendar-day:hover {
+  background-color: #e5e7eb;
+}
+
+.warehouse-calendar-day-inactive {
+  color: #9ca3af;
+}
+
+.low-stock { background-color: red; }
+.medium-stock { background-color: yellow; }
+.high-stock { background-color: green; }
+
+
+/* Item List Styles */
+.warehouse-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.warehouse-item-card {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.warehouse-item-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.warehouse-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.warehouse-item-info {
+  flex: 1;
+}
+
+.warehouse-item-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.warehouse-item-subtitle {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0 0;
+}
+
+.warehouse-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.warehouse-item-quantity {
+  color: #374151;
+}
+
+.warehouse-item-plus {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.warehouse-item-plus:hover {
+  background-color: #f3f4f6;
+}
+
+.warehouse-item-status {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+}
+
+.warehouse-status-red {
+  background-color: #ef4444;
+}
+
+.warehouse-status-yellow {
+  background-color: #f59e0b;
+}
+
+.warehouse-status-green {
+  background-color: #10b981;
+}
+
+.warehouse-add-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.warehouse-add-button:hover {
+  background-color: #2563eb;
 }
