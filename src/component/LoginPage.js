@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getUsers } from '../api/axios';
+import { getUsers, loginLogs } from '../api/axios';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -15,19 +15,27 @@ const LoginPage = () => {
         });
     }, []);
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-    
+
         const user = users.find(
-            (user) => (user.username === username && user.password === password) || (username === 'adminsundaya' && password === 'admin')
+            (user) => (user.username === username && user.password === password)
         );
+
+        const sundaya = (username === 'adminsundaya' && password === 'admin');
     
-        if (user) {
-            const { role } = user;
+        if (user || sundaya) {
+            let role;
+            if(sundaya){
+                role = "admin"
+            }
+            else{
+                role = user.role;
+            }
     
             // Save user details to localStorage
             localStorage.setItem('auth', JSON.stringify({ username, role }));
-    
+            
             // Redirect based on role
             if(username === "admin_sundaya"){
                 navigate('/')
@@ -39,10 +47,21 @@ const LoginPage = () => {
                 }
             }
 
-            // Force page reload after navigation
-            setTimeout(() => {
-                window.location.reload();
-            });
+            const payload = {
+                username: username,
+                action: "login"
+            };
+            const logResponse = await loginLogs(payload); // Pastikan API dipanggil dengan await
+            if (logResponse) {
+                console.log("Login log berhasil disimpan:", logResponse);
+                // Force page reload setelah login
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            } else {
+                console.error("Gagal menyimpan login log.");
+            }
+
         } else {
             setError('Invalid username or password');
         }
@@ -61,17 +80,27 @@ const LoginPage = () => {
             <div
                 style={{
                     backgroundColor: 'white',
-                    padding: '40px',
+                    // padding: '1000px',
                     borderRadius: '10px',
                     textAlign: 'center',
                     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-                    width: '900px',
+                    // width: '900px',
                 }}
+
+                className='p-md-5 p-3 w-75'
             >
                 <img
                     src="/Asset 1.png"
                     alt="Sundaya Logo"
                     style={{ width: '400px', height: '80px', marginBottom: '20px' }}
+                    className='d-none d-md-block mx-auto'
+                />
+
+                <img
+                    src="/Asset 1.png"
+                    alt="Sundaya Logo"
+                    style={{ width: '100%', height: '', marginBottom: '20px' }}
+                    className='d-md-none d-block'
                 />
                 {error && <p style={{ color: 'red', fontSize: '14px' }}>{error}</p>}
                 <form onSubmit={handleLogin}>

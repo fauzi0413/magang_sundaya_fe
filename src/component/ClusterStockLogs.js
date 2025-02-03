@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch } from 'react-icons/fa';
-import { getWarehouseLogs } from '../api/axios';
+import { getClusterStockLogs } from '../api/axios';
 import moment from 'moment';
 
-const History = () => {
-  const [warehouseLogs, setWarehouseLogs] = useState([]);
+const ClusterStockLogs = () => {
+  const [clusterStockLogs, setClusterStockLogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all'); // Default 'all' lowercase
 
   useEffect(() => {
-    getWarehouseLogs((data) => {
-      setWarehouseLogs(data);
+    getClusterStockLogs((data) => {
+      setClusterStockLogs(data);
     });
   }, []);
 
   // Filter data berdasarkan pencarian dan status
-  const filteredData = warehouseLogs.filter(item => {
+  const filteredData = clusterStockLogs.filter(item => {
     const matchesSearch =
       item.sap_code?.toLowerCase().includes(searchTerm.toLowerCase()) || 
       item.user?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -66,9 +66,12 @@ const History = () => {
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>SAP CODE</th>
+              {/* <th>ID Data</th> */}
+              <th>ID Cluster</th>
+              <th>Total Site</th>
+              <th>SAP Code</th>
               <th>Total Barang</th>
-              <th>Status</th>
+              <th>Status Barang</th>
               <th>Action</th>
               <th>User</th>
               <th>Date</th>
@@ -78,8 +81,11 @@ const History = () => {
             {filteredData.length > 0 ? (
               filteredData.map((item, index) => (
                 <tr key={index}>
+                  {/* <td>{item.id_data}</td> */}
+                  <td>{item.id_cluster}</td>
+                  <td>{item.total_site}</td>
                   <td>{item.sap_code}</td>
-                  <td>{item.total_barang}</td>
+                  <td>{item.total}</td>
                   <td>{item.status_barang}</td>
                   <td>{item.action}</td>
                   <td>{item.user}</td>
@@ -88,7 +94,7 @@ const History = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="text-center">No data found</td>
+                <td colSpan="8" className="text-center">No data found</td>
               </tr>
             )}
           </tbody>
@@ -98,4 +104,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default ClusterStockLogs;

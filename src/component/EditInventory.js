@@ -46,8 +46,6 @@ const EditInventory = () => {
             user,
         };
 
-        // console.log("Mengupdate data:", payload);
-
         // Kirim data update ke server
         putInventory(id, payload, (data) => {
             // Navigasi ke halaman success setelah submit berhasil

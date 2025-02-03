@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaArrowLeft, FaBox, FaClipboardList, FaEdit } from 'react-icons/fa';
 import { getInventory, getWarehouseById } from '../api/axios';
 
-const WarehouseDetail = () => {
+const ClusterDetail = () => {
     const { id } = useParams();
     const [warehouse, setWarehouse] = useState(null);
     const [inventorys, setInventory] = useState([]);
@@ -46,15 +46,6 @@ const WarehouseDetail = () => {
             return { status: "Ada", warna: "success" }; // Hijau
         } 
     };
-    
-    useEffect(() => {
-        if (warehouse) {
-            setWarehouse((prev) => ({
-                ...prev,
-                status_barang: prev.status_barang === "baru" ? "Baru" : "Bekas"
-            }));
-        }
-    }, [warehouse]);    
 
     if (!warehouse) {
         return <div className="container mt-5">Memuat data...</div>;
@@ -148,7 +139,7 @@ const WarehouseDetail = () => {
                         className="btn btn-primary"
                         onClick={(e) => handleEditWarehouse(e, warehouse.id)}
                     >
-                        <FaEdit /> Edit Page
+                        <FaEdit /> Edit
                     </button>
                 </form>
             </div>
@@ -156,4 +147,4 @@ const WarehouseDetail = () => {
     );
 };
 
-export default WarehouseDetail;
+export default ClusterDetail;

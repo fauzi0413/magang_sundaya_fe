@@ -54,12 +54,12 @@ function DashboardWarehouse() {
   return (
     <>
       <div className="p-3 bg-light">
-        <div className="container">
+        <div className="container bg-light">
           {/* SLA Comparison */}
           <div className="row">
-            <div className="col-12 p-3 bg-light">
-              <div className="bg-white border border-secondary shadow-sm">
-                <div className="d-flex justify-content-end p-4">
+            <div className="p-3 col-12">
+              <div className="bg-white border shadow-sm border-secondary">
+                <div className="p-4 d-flex justify-content-end">
                   <select className="form-select" style={{ width: "200px" }}>
                     <option>Masuk</option>
                     <option>Keluar</option>
@@ -89,8 +89,8 @@ function DashboardWarehouse() {
                 footnote={`${dataCard?.data?.snmpDown?.percentage ?? 0} %`}
                 route="snmpdown"
               />
-              <div className="col-9 p-2 bg-light">
-                <div className="bg-white border border-secondary shadow-sm">
+              <div className="p-2 col-12 bg-light">
+                <div className="bg-white border shadow-sm border-secondary">
                   <GeoMap />
                 </div>
               </div>

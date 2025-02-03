@@ -53,10 +53,10 @@ function Dashboard() {
   return (
     <>
       <div className="p-3 bg-light">
-        <div className="container">
+        <div className="container bg-light">
           {/* Header */}
           <div className="row">
-            <div className="col-12 p-3 bg-light">
+            <div className="col-12 p-3">
               <div className="d-flex justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm">
                 <button className="btn btn-primary ms-2">Search</button>
                 <h2>Dashboard</h2>
@@ -80,7 +80,7 @@ function Dashboard() {
 
           {/* SLA Comparison */}
           <div className="row">
-            <div className="col-12 p-3 bg-light">
+            <div className="col-12 p-3">
               <div className="bg-white border border-secondary shadow-sm">
                 <div className="d-flex justify-content-end p-4">
                   <select className="form-select" style={{ width: "200px" }}>

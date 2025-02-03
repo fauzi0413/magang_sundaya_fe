@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "../App.css";
 import { Link, useNavigate } from "react-router-dom";
-import { getInventory, getWarehouse } from "../api/axios";
+import { deleteWarehouseById, getInventory, getWarehouse } from "../api/axios";
 import { Search, Calendar, Plus } from "lucide-react";
-
-
-
+import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 const Warehouse = () => {
   const [warehouses, setWarehouse] = useState([]);
   const [inventorys, setInventory] = useState([]);
-  const [activeTab, setActiveTab] = useState("OM");
+  const [activeTab, setActiveTab] = useState("NOC");
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(new Date());
-
 
   useEffect(() => {
     getWarehouse((data) => {
@@ -31,9 +29,9 @@ const Warehouse = () => {
   const navigate = useNavigate();
 
   const getStockStatus = (total_barang, min_stock) => {
-    if (total_barang < min_stock) return "low-stock"; // Merah
-    if (total_barang === min_stock) return "medium-stock"; // Kuning
-    return "high-stock"; // Hijau
+    if (total_barang === 0) return "danger"; // Merah
+    if (total_barang <= min_stock) return "warning"; // Kuning
+    return "success"; // Hijau
   };
 
   const handleIncrement = (index) => {
@@ -65,8 +63,44 @@ const Warehouse = () => {
     
     return days;
   };
+  
+    // Handle detail item with specific ID
+    const handleDetailWarehouse= (id) => {
+      navigate(`/warehouse/${id}`); // Navigasi ke halaman edit dengan ID
+    };
+  
+    // Handle edit item with specific ID
+    const handleEditWarehouse= (id) => {
+      navigate(`/warehouse/edit/${id}`); // Navigasi ke halaman edit dengan ID
+    };
+  
+    // Handle delete item with specific ID
+    const handleDeleteWarehouse = (id) => {
+      Swal.fire({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this item!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+          if (result.isConfirmed) {
+            deleteWarehouseById(id, (response) => {
+                console.log('Item deleted:', response);
+                setWarehouse(warehouses.filter((warehouse) => warehouse.id !== id));
 
-
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "The item has been deleted successfully.",
+                    icon: "success",
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+            });
+          }
+      });
+    };
 
   return (
     <div className="backgroundwarehouse">
@@ -156,30 +190,29 @@ const Warehouse = () => {
           </div>
         )}
 
-        <div className="item-list">
+        <div className="item-list ">
           {warehouses.map((item) => {
             const matchedInventory = inventorys.find(
               (inventory) => inventory.sap_code === item.sap_code
             );
-            const min_stock = matchedInventory ? matchedInventory.min_stock : 0;
+            // Jika tidak ditemukan, gunakan nilai default
+            const min_stock = matchedInventory?.min_stock || 0;
+            const name = matchedInventory?.name || "Unknown Item"; 
+            const description = matchedInventory?.description || "No description available";
+
             const statusClass = getStockStatus(item.total_barang, min_stock);
 
             return (
-              <div className="item-card m-3 my-5 bg-white p-4" key={item.id}>
+              <div className="p-4 my-3 bg-white item-card" key={item.id}>
                 <div className="item-info">
-                  {matchedInventory && <h3>{matchedInventory.name}</h3>}
-                  <h3>{item.name}</h3>
-                  <p>{item.sap_code}</p>
+                  <h3>{item.sap_code} - {name}</h3>
+                  <p>{description}</p>
                 </div>
                 <div className="item-qty">
-                  <span>{item.total_barang} pcs</span>
-                  <button
-                    className="plus-icon"
-                    onClick={() => handleIncrement(item.id)}
-                  >
-                    +
-                  </button>
-                  <span className={`status ${statusClass}`} style={{fontSize: '100px'}}></span>
+                  <span className={`badge bg-${statusClass}`}>{item.total_barang} pcs</span>
+                  <button className='btn' onClick={() => handleDetailWarehouse(item.id)}><FaEye></FaEye></button>
+                  <button className='btn text-primary' onClick={() => handleEditWarehouse(item.id)}><FaEdit></FaEdit></button>
+                  <button className='btn text-danger' onClick={() => handleDeleteWarehouse(item.id)}><FaTrash></FaTrash></button>
                 </div>
               </div>
             );
@@ -188,7 +221,7 @@ const Warehouse = () => {
 
          {/* Add Button */}
          <button
-          onClick={() => navigate("/WarehouseDetail")}
+          onClick={() => navigate("/warehouse/create")}
           className="warehouse-add-button"
         >
           <Plus size={24} />
