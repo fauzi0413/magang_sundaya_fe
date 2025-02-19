@@ -2,10 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch, FaPlus, FaTrash, FaEdit, FaEye } from 'react-icons/fa'; // Importing icons
+<<<<<<< HEAD
 import { deleteUserById, getUserById, getUsers } from '../api/axios';
 import Swal from 'sweetalert2';
 import moment from 'moment'
 import 'moment/locale/id'  // without this line it didn't work
+=======
+import { deleteUserById, getUsers } from '../api/axios';
+import Swal from 'sweetalert2';
+import moment from 'moment'
+import 'moment/locale/id'  // without this line it didn't work
+import HeaderContent from './utils/HeaderContent';
+>>>>>>> 45558cc (initial commit)
 moment.locale('id')
 
 const User = () => {
@@ -21,6 +29,10 @@ const User = () => {
     
   // Fungsi pencarian berdasarkan username
   const filteredData = users.filter(user =>
+<<<<<<< HEAD
+=======
+    user.status_data === "public" &&
+>>>>>>> 45558cc (initial commit)
     user.username?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -101,6 +113,11 @@ const User = () => {
 
   return (
     <div className="container my-5">
+<<<<<<< HEAD
+=======
+      {/* Header  */}
+      <HeaderContent title="User Management" icon="bi-file-earmark-text" />
+>>>>>>> 45558cc (initial commit)
       {/* Search Bar & Add Button */}
     <div className="mt-4 d-flex justify-content-center">
         <div className="gap-2 mb-4 d-flex align-items-center" style={{ maxWidth: '900px', width: '100%' }}>
@@ -133,6 +150,10 @@ const User = () => {
         <table className="table table-striped">
           <thead>
             <tr>
+<<<<<<< HEAD
+=======
+              <th className='text-center'>No.</th>
+>>>>>>> 45558cc (initial commit)
               <th>Username</th>
               <th>Role</th>
               <th className='text-center'>Action</th>
@@ -140,6 +161,7 @@ const User = () => {
           </thead>
           <tbody>
             {filteredData.length > 0 ? (
+<<<<<<< HEAD
               users.map((user) => (
                 <tr key={user.id}>
                   <td>{user.username}</td>
@@ -148,6 +170,19 @@ const User = () => {
                       <span className="badge bg-success">admin</span>
                     ) : user.role === "management" ? (
                       <span className="badge bg-warning">management</span>
+=======
+              filteredData.map((user, index) => (
+                <tr key={user.id}>
+                  <td className='text-center'>{index + 1}</td>
+                  <td>{user.username}</td>
+                  <td>
+                    {user.role === "noc" ? (
+                      <span className="badge bg-success">Admin NOC</span>
+                    ) : user.role === "om" ? (
+                      <span className="badge bg-warning">Admin OM</span>
+                    ) : user.role === "management" ? (
+                      <span className="badge bg-primary">Management</span>
+>>>>>>> 45558cc (initial commit)
                     ) : (
                       <span className="badge bg-secondary">Unknown</span> // Jika status tidak "show" atau "hide"
                     )}

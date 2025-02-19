@@ -3,7 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch } from 'react-icons/fa';
 import { getClusterStockLogs } from '../api/axios';
 import moment from 'moment';
+<<<<<<< HEAD
 
+=======
+import HeaderContent from './utils/HeaderContent'; 
+>>>>>>> 45558cc (initial commit)
 const ClusterStockLogs = () => {
   const [clusterStockLogs, setClusterStockLogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,9 +33,17 @@ const ClusterStockLogs = () => {
 
   return (
     <div className="container mt-5">
+<<<<<<< HEAD
       {/* Search Bar & Filter Buttons (Sticky Filter) */}
       <div className="top-0 p-3 mb-4 bg-white rounded shadow-sm position-sticky">
         <div className="gap-2 d-flex justify-content-center align-items-center" style={{ maxWidth: '900px', width: '100%' }}>
+=======
+      {/* Header for Login Logs */}
+      <HeaderContent title="Cluster Stock Logs" icon="bi-file-earmark-text" />
+      {/* Search Bar & Filter Buttons (Sticky Filter) */}
+      {/* <div className="top-0 p-3 mb-4 bg-white rounded shadow-sm position-sticky"> */}
+        <div className="mb-4 gap-2 d-flex justify-content-center align-items-center" style={{ width: '100%' }}>
+>>>>>>> 45558cc (initial commit)
           
           {/* Search Input */}
           <div className="shadow-sm input-group rounded-pill" style={{ backgroundColor: '#f8f9fa', padding: '5px' }}>
@@ -59,7 +71,11 @@ const ClusterStockLogs = () => {
             </button>
           ))}
         </div>
+<<<<<<< HEAD
       </div>
+=======
+      {/* </div> */}
+>>>>>>> 45558cc (initial commit)
 
       {/* Table */}
       <div className="table-responsive">
@@ -67,9 +83,15 @@ const ClusterStockLogs = () => {
           <thead>
             <tr>
               {/* <th>ID Data</th> */}
+<<<<<<< HEAD
               <th>ID Cluster</th>
               <th>Total Site</th>
               <th>SAP Code</th>
+=======
+              <th>SAP Code</th>
+              <th>ID Cluster</th>
+              <th>Total Site</th>
+>>>>>>> 45558cc (initial commit)
               <th>Total Barang</th>
               <th>Status Barang</th>
               <th>Action</th>
@@ -82,9 +104,15 @@ const ClusterStockLogs = () => {
               filteredData.map((item, index) => (
                 <tr key={index}>
                   {/* <td>{item.id_data}</td> */}
+<<<<<<< HEAD
                   <td>{item.id_cluster}</td>
                   <td>{item.total_site}</td>
                   <td>{item.sap_code}</td>
+=======
+                  <td>{item.sap_code}</td>
+                  <td>{item.id_cluster}</td>
+                  <td>{item.total_site}</td>
+>>>>>>> 45558cc (initial commit)
                   <td>{item.total}</td>
                   <td>{item.status_barang}</td>
                   <td>{item.action}</td>

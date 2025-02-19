@@ -11,4 +11,16 @@
 
 .input-group-text {
   background-color: #f8f9fa;
+<<<<<<< HEAD
 }
+=======
+}
+
+.action-login {
+  color: green;
+}
+
+.action-logout {
+  color: red;
+}
+>>>>>>> 45558cc (initial commit)

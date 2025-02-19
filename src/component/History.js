@@ -3,7 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch } from 'react-icons/fa';
 import { getWarehouseLogs } from '../api/axios';
 import moment from 'moment';
+<<<<<<< HEAD
 
+=======
+import HeaderContent from './utils/HeaderContent';
+>>>>>>> 45558cc (initial commit)
 const History = () => {
   const [warehouseLogs, setWarehouseLogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,9 +33,17 @@ const History = () => {
 
   return (
     <div className="container mt-5">
+<<<<<<< HEAD
       {/* Search Bar & Filter Buttons (Sticky Filter) */}
       <div className="top-0 p-3 mb-4 bg-white rounded shadow-sm position-sticky">
         <div className="gap-2 d-flex justify-content-center align-items-center" style={{ maxWidth: '900px', width: '100%' }}>
+=======
+      {/* Header for Login Logs */}
+      <HeaderContent title="Warehouse Stock Logs" icon="bi-file-earmark-text" />
+      {/* Search Bar & Filter Buttons (Sticky Filter) */}
+      {/* <div className="top-0 p-3 mb-4 bg-white rounded shadow-sm position-sticky"> */}
+        <div className="mb-4 gap-2 d-flex justify-content-center align-items-center" style={{  width: '100%' }}>
+>>>>>>> 45558cc (initial commit)
           
           {/* Search Input */}
           <div className="shadow-sm input-group rounded-pill" style={{ backgroundColor: '#f8f9fa', padding: '5px' }}>
@@ -59,7 +71,11 @@ const History = () => {
             </button>
           ))}
         </div>
+<<<<<<< HEAD
       </div>
+=======
+      {/* </div> */}
+>>>>>>> 45558cc (initial commit)
 
       {/* Table */}
       <div className="table-responsive">
@@ -67,7 +83,11 @@ const History = () => {
           <thead>
             <tr>
               <th>SAP CODE</th>
+<<<<<<< HEAD
               <th>Total Barang</th>
+=======
+              <th>Min Stock</th>
+>>>>>>> 45558cc (initial commit)
               <th>Status</th>
               <th>Action</th>
               <th>User</th>
@@ -79,7 +99,11 @@ const History = () => {
               filteredData.map((item, index) => (
                 <tr key={index}>
                   <td>{item.sap_code}</td>
+<<<<<<< HEAD
                   <td>{item.total_barang}</td>
+=======
+                  <td>{item.min_stock}</td>
+>>>>>>> 45558cc (initial commit)
                   <td>{item.status_barang}</td>
                   <td>{item.action}</td>
                   <td>{item.user}</td>

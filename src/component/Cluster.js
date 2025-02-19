@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< HEAD
 import { FaSearch, FaPlus, FaTrash, FaEdit } from 'react-icons/fa'; // Importing icons
+=======
+import { FaSearch, FaPlus, FaTrash, FaEdit, FaEye } from 'react-icons/fa'; // Importing icons
+>>>>>>> 45558cc (initial commit)
 import { deleteClusterById, getCluster } from '../api/axios';
 import Swal from 'sweetalert2';
 import moment from 'moment'
 import 'moment/locale/id'  // without this line it didn't work
+<<<<<<< HEAD
+=======
+import HeaderContent from './utils/HeaderContent'; 
+>>>>>>> 45558cc (initial commit)
 moment.locale('id')
 
 const Cluster = () => {
@@ -74,9 +82,23 @@ const Cluster = () => {
         }
     });
   };
+<<<<<<< HEAD
 
   return (
     <div className="container my-5">
+=======
+  
+    // Handle detail item with specific ID
+    const handleDetailItem= (id) => {
+      navigate(`/cluster/${id}`); // Navigasi ke halaman detail dengan ID
+    };
+  
+
+  return (
+    <div className="container my-5">
+      {/* Header for Login Logs */}
+      <HeaderContent title="Cluster Detail" icon="bi-file-earmark-text" />
+>>>>>>> 45558cc (initial commit)
       {/* Search Bar & Add Button */}
      <div className="mt-4 d-flex justify-content-center">
      <div className="gap-2 mb-4 d-flex align-items-center" style={{ maxWidth: '900px', width: '100%' }}>
@@ -104,6 +126,7 @@ const Cluster = () => {
           <FaPlus style={{ color: '#C42B2B' }} />
         </button>
       </div>
+<<<<<<< HEAD
 
       <div className="table-container">
         <table className="table table-striped">
@@ -142,6 +165,29 @@ const Cluster = () => {
           </tbody>
         </table>
       </div>
+=======
+      
+      <div className="item-list ">
+        {clusters.map((item) => {
+
+          return (
+            <div className="p-4 my-3 bg-light item-card" key={item.id}>
+              <div className="item-info">
+                <h3><span className='fw-bold'>{item.id_cluster}</span> - {item.center_point}</h3>
+                <p>{item.kabupaten_kota}, {item.provinsi} - {item.pic} ({item.contact})</p>
+              </div>
+              <div className="item-qty">
+                <span >{item.total_site}</span>
+                <button className='btn' onClick={() => handleDetailItem(item.id)}><FaEye></FaEye></button>
+                <button className='btn text-primary' onClick={() => handleEditItem(item.id)}><FaEdit></FaEdit></button>
+                <button className='btn text-danger' onClick={() => handleDeleteItem(item.id)}><FaTrash></FaTrash></button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      
+>>>>>>> 45558cc (initial commit)
     </div>
   );
 };

@@ -107,9 +107,15 @@ const EditUser = () => {
                                 value={user.role}
                                 onChange={handleChange}
                             >
+<<<<<<< HEAD
                                 {/* <option value="">Pilih Role</option> */}
                                 <option value="admin">Admin</option>
                                 <option value="management">Management</option>
+=======
+                            <option value="noc">Admin NOC</option>
+                            <option value="om">Admin OM</option>
+                            <option value="management">Management</option>
+>>>>>>> 45558cc (initial commit)
                             </select>
                         </div>
                     </div>

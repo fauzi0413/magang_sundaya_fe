@@ -3,6 +3,7 @@ import * as echarts from "echarts";
 
 const EChartsSLA = ({ inputData }) => {
   const chartRef = useRef(null);
+<<<<<<< HEAD
   let chartInstance = null;
 
   useEffect(() => {
@@ -81,3 +82,69 @@ const EChartsSLA = ({ inputData }) => {
 };
 
 export default EChartsSLA;
+=======
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const processData = (data) => {
+      const xData = data.map((item) => item.date);
+      const yData = data.map((item) => item.value);
+      return { xData, yData };
+    };
+
+    const { xData, yData } = processData(inputData);
+
+    const chartInstance = echarts.init(chartRef.current);
+    const options = {
+      title: { text: "" },
+      tooltip: { trigger: "axis" },
+      legend: { data: ["Value"] },
+      grid: { left: "3%", right: "4%", bottom: "3%", containLabel: true },
+      toolbox: { feature: { saveAsImage: {} } },
+      xAxis: { type: "category", boundaryGap: false, data: xData },
+      yAxis: { type: "value" },
+      series: [
+        { name: "Value", type: "line", data: yData },
+      ],
+    };
+    chartInstance.setOption(options);
+
+    // Fungsi untuk menyesuaikan ukuran grafik dengan container
+    const resizeChart = () => {
+      if (containerRef.current && chartInstance) {
+        const containerWidth = containerRef.current.clientWidth;
+        const containerHeight = containerRef.current.clientHeight;
+        chartInstance.resize({ width: containerWidth, height: containerHeight });
+      }
+    };
+
+    // Menggunakan ResizeObserver untuk memantau perubahan ukuran container
+    const resizeObserver = new ResizeObserver(resizeChart);
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    // Membersihkan observer dan chart instance saat komponen di-unmount
+    return () => {
+      resizeObserver.disconnect();
+      chartInstance.dispose();
+    };
+  }, [inputData]);
+
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        width: "100%",
+        height: "300px",
+        padding: "20px", // Sesuaikan padding sesuai kebutuhan
+        boxSizing: "border-box", // Pastikan padding termasuk dalam perhitungan ukuran
+      }}
+    >
+      <div ref={chartRef} style={{ width: "100%", height: "100%" }} />
+    </div>
+  );
+};
+
+export default EChartsSLA;
+>>>>>>> 45558cc (initial commit)

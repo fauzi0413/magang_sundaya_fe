@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< HEAD
 import { FaArrowLeft, FaBox, FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
 import { getInventory, getWarehouse, getWarehouseById, postInventory, postWarehouse, putWarehouse } from '../api/axios';
+=======
+import { FaArrowLeft, FaBox, FaClipboardList } from 'react-icons/fa';
+import { getWarehouseById, putWarehouse } from '../api/axios';
+>>>>>>> 45558cc (initial commit)
 import Swal from 'sweetalert2';
 
 const EditWarehouse = () => {
@@ -29,7 +34,11 @@ const EditWarehouse = () => {
         setError('');
 
         // Basic validation
+<<<<<<< HEAD
         if (!warehouse.total_barang) {
+=======
+        if (!warehouse.min_stock) {
+>>>>>>> 45558cc (initial commit)
             setError('All fields are required.');
             return;
         }
@@ -39,7 +48,11 @@ const EditWarehouse = () => {
 
         // Prepare data payload
         const payload = {
+<<<<<<< HEAD
             total_barang: parseInt(warehouse.total_barang),
+=======
+            min_stock: parseInt(warehouse.min_stock),
+>>>>>>> 45558cc (initial commit)
             status_barang: "baru",
             user,
         };
@@ -87,15 +100,26 @@ const EditWarehouse = () => {
                     </div>
 
                     <div className="mb-3 form-group">
+<<<<<<< HEAD
                         <h6 className='text-start'>Total Stock Barang</h6>
+=======
+                        <h6 className='text-start'>Minimal Stock Barang</h6>
+>>>>>>> 45558cc (initial commit)
                         <div className="input-group">
                             <span className="input-group-text"><FaBox /></span>
                             <input
                                 className="form-control"
+<<<<<<< HEAD
                                 placeholder="Total Stock Barang"
                                 type="number"
                                 name="total_barang"
                                 value={warehouse.total_barang}
+=======
+                                placeholder="Minimal Stock Barang"
+                                type="number"
+                                name="min_stock"
+                                value={warehouse.min_stock}
+>>>>>>> 45558cc (initial commit)
                                 onChange={handleChange}
                             />
                         </div>

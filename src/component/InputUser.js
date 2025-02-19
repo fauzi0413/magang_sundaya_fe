@@ -111,7 +111,12 @@ const InputUser = () => {
                                 onChange={(e) => setRole(e.target.value)}
                             >
                                 <option value="">Pilih Role</option>
+<<<<<<< HEAD
                                 <option value="admin">Admin</option>
+=======
+                                <option value="noc">Admin NOC</option>
+                                <option value="om">Admin OM</option>
+>>>>>>> 45558cc (initial commit)
                                 <option value="management">Management</option>
                             </select>
                         </div>

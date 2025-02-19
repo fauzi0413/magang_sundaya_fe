@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+<<<<<<< HEAD
 import favicon from "../img/favicon.ico";
 import { Search, User, LogOut } from "lucide-react"; // Keeping the icons for simplicity
+=======
+import { Search, User, LogOut } from "lucide-react";
+>>>>>>> 45558cc (initial commit)
 import { useNavigate } from "react-router-dom";
 import { loginLogs } from "../api/axios";
 
 function Navbar({ Toggle }) {
+<<<<<<< HEAD
   const [visible, setVisible] = useState(true);
   const [currentTime, setCurrentTime] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -127,6 +132,68 @@ const logout = async () => {
           </li>
         </ul>
       </div>  
+=======
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentTime, setCurrentTime] = useState("");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const authData = localStorage.getItem("auth");
+    setIsAuthenticated(!!authData);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      const intervalId = setInterval(() => {
+        setCurrentTime(new Date().toLocaleTimeString());
+      }, 1000);
+      return () => clearInterval(intervalId);
+    }
+  }, [isMobile]);
+
+  const logout = async () => {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+    const user = auth?.username;
+
+    if (user) {
+      await loginLogs({ username: user, action: "logout" });
+    }
+    localStorage.removeItem("auth");
+    navigate("/login");
+    window.location.reload();
+  };
+
+  return (
+    <nav className="navbar navbar-expand-lg custom-bg navbar-dark fixed-top px-3" style={{ height: "80px" }}>
+      {isAuthenticated && (
+        <div className="d-flex align-items-center">
+             <button className="btn text-white me-2" onClick={Toggle} style={{ background: "none", border: "none" }}>
+              <i className="bi bi-justify fs-3 animate-icon"></i>
+            </button>
+          <img
+            src={`${process.env.PUBLIC_URL}/${isMobile ? "white.png" : "white.png"}`}
+            alt="Sundaya Logo"
+            width={isMobile ? 150 : 210}
+            height={isMobile ? 30 : 40}
+          />
+          {!isMobile && <strong className="text-white ms-3">{currentTime}</strong>}
+        </div>
+      )}
+ 
+      {isAuthenticated && (
+        <div className="ms-auto">
+          <button className="text-white btn" style={{ background: "none", border: "none" }} onClick={logout}>
+            <LogOut size={23} /> {!isMobile && "Logout"}
+          </button>
+        </div>
+>>>>>>> 45558cc (initial commit)
       )}
     </nav>
   );

@@ -6,6 +6,10 @@ import { deleteInventoryById, getInventory } from '../api/axios';
 import Swal from 'sweetalert2';
 import moment from 'moment'
 import 'moment/locale/id'  // without this line it didn't work
+<<<<<<< HEAD
+=======
+import HeaderContent from './utils/HeaderContent';
+>>>>>>> 45558cc (initial commit)
 moment.locale('id')
 
 const Inventory = () => {
@@ -22,7 +26,11 @@ const Inventory = () => {
     
   // Filter data based on search term and status
   const filteredData = inventorys.filter(inventory => {
+<<<<<<< HEAD
     const matchesSearch = inventory.name.toLowerCase().includes(searchTerm.toLowerCase());
+=======
+    const matchesSearch = inventory.name.toLowerCase().includes(searchTerm.toLowerCase()) && inventory.status_data === "public";
+>>>>>>> 45558cc (initial commit)
     const matchesStatus = filterStatus === 'All' || inventory.status === filterStatus;
     return matchesSearch && matchesStatus;
   });
@@ -77,6 +85,11 @@ const Inventory = () => {
 
   return (
     <div className="container my-5">
+<<<<<<< HEAD
+=======
+       {/* Header  */}
+       <HeaderContent title="Inventory Management" icon="bi-file-earmark-text" />
+>>>>>>> 45558cc (initial commit)
       {/* Search Bar & Add Button */}
      <div className="mt-4 d-flex justify-content-center">
      <div className="gap-2 mb-4 d-flex align-items-center" style={{ maxWidth: '900px', width: '100%' }}>
@@ -109,9 +122,15 @@ const Inventory = () => {
         <table className="table table-striped">
           <thead>
             <tr>
+<<<<<<< HEAD
               <th>SAP-CODE</th>
               <th>Nama Barang</th>
               <th>Min Stock</th>
+=======
+              <th className='text-center'>No.</th>
+              <th>SAP Code</th>
+              <th>Nama Barang</th>
+>>>>>>> 45558cc (initial commit)
               <th>Status</th>
               <th>Date</th>
               <th>Detail</th>
@@ -120,11 +139,19 @@ const Inventory = () => {
           </thead>
           <tbody>
             {filteredData.length > 0 ? (
+<<<<<<< HEAD
               inventorys.map((inventory) => (
                 <tr key={inventory.id}>
                   <td>{inventory.sap_code}</td>
                   <td>{inventory.name}</td>
                   <td>{inventory.min_stock}</td>
+=======
+              filteredData.map((inventory, index) => (
+                <tr key={inventory.id}>
+                  <td className='text-center'>{index + 1}</td>
+                  <td>{inventory.sap_code}</td>
+                  <td>{inventory.name}</td>
+>>>>>>> 45558cc (initial commit)
                   <td>
                     {inventory.status === "show" ? (
                       <span className="badge bg-success">Show</span>

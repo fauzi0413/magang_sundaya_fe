@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import "../App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteWarehouseById, getInventory, getWarehouse } from "../api/axios";
@@ -201,10 +202,92 @@ const Warehouse = () => {
             const description = matchedInventory?.description || "No description available";
 
             const statusClass = getStockStatus(item.total_barang, min_stock);
+=======
+import { useNavigate } from "react-router-dom";
+import { deleteWarehouseById, getInventory, getMaterial, getWarehouse } from "../api/axios";
+import { Search, Calendar, Plus } from "lucide-react";
+import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
+import Swal from 'sweetalert2';
+import HeaderContent from './utils/HeaderContent';
+import "../App.css";
+
+const Warehouse = () => {
+  const navigate = useNavigate();
+  const [warehouses, setWarehouses] = useState([]);
+  const [materials, setMaterials] = useState([]);
+  const [inventorys, setInventorys] = useState([]);
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        getWarehouse(setWarehouses);
+        getInventory(setInventorys);
+        getMaterial(setMaterials)
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const getStockStatus = (total_barang, min_stock) => {
+    if (total_barang === 0) return "danger";
+    if (total_barang <= min_stock) return "warning";
+    return "success";
+  };
+
+  const handleDeleteWarehouse = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this item!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteWarehouseById(id);
+          setWarehouses((prev) => prev.filter((warehouse) => warehouse.id !== id));
+          Swal.fire("Deleted!", "The item has been deleted successfully.", "success");
+        } catch (error) {
+          console.error("Error deleting warehouse:", error);
+        }
+      }
+    });
+  };
+
+  return (
+    <div className="backgroundwarehouse">
+      <div className="container bg-transparent">
+        <HeaderContent title="Warehouse Stock" icon="bi-file-earmark-text" />
+        
+        <div className="warehouse-controls">
+          <div className="warehouse-search-wrapper">
+            <input type="text" placeholder="Search" className="warehouse-search-input" />
+            <Search className="warehouse-search-icon" size={20} />
+          </div>
+          <button onClick={() => setShowCalendar(!showCalendar)} className="warehouse-calendar-button">
+            <Calendar size={20} />
+          </button>
+        </div>
+
+        <div className="item-list">
+          {warehouses.map((item) => {
+            const matchedInventory = inventorys.find((inv) => inv.sap_code === item.sap_code) || {};
+            const min_stock = item.min_stock || 0;
+            const name = matchedInventory.name || "Unknown Item";
+            const description = matchedInventory.description || "No description available";
+            const filteredData = materials.filter((material) => material.id_location === item.id_warehouse && material.sap_code === item.sap_code);
+            const statusClass = getStockStatus(filteredData.length, min_stock);
+>>>>>>> 45558cc (initial commit)
 
             return (
               <div className="p-4 my-3 bg-white item-card" key={item.id}>
                 <div className="item-info">
+<<<<<<< HEAD
                   <h3>{item.sap_code} - {name}</h3>
                   <p>{description}</p>
                 </div>
@@ -213,17 +296,31 @@ const Warehouse = () => {
                   <button className='btn' onClick={() => handleDetailWarehouse(item.id)}><FaEye></FaEye></button>
                   <button className='btn text-primary' onClick={() => handleEditWarehouse(item.id)}><FaEdit></FaEdit></button>
                   <button className='btn text-danger' onClick={() => handleDeleteWarehouse(item.id)}><FaTrash></FaTrash></button>
+=======
+                  <h3><span className="fw-bold">{item.sap_code}</span> - {name}</h3>
+                  <p>{description}</p>
+                </div>
+                <div className="item-qty">
+                  <span className={`badge bg-${statusClass}`}>{filteredData.length} pcs</span>
+                  <button className="btn" onClick={() => navigate(`/warehouse/${item.id}`)}><FaEye /></button>
+                  <button className="btn text-primary" onClick={() => navigate(`/warehouse/edit/${item.id}`)}><FaEdit /></button>
+                  <button className="btn text-danger" onClick={() => handleDeleteWarehouse(item.id)}><FaTrash /></button>
+>>>>>>> 45558cc (initial commit)
                 </div>
               </div>
             );
           })}
         </div>
 
+<<<<<<< HEAD
          {/* Add Button */}
          <button
           onClick={() => navigate("/warehouse/create")}
           className="warehouse-add-button"
         >
+=======
+        <button onClick={() => navigate("/warehouse/create")} className="warehouse-add-button">
+>>>>>>> 45558cc (initial commit)
           <Plus size={24} />
         </button>
       </div>
@@ -231,4 +328,8 @@ const Warehouse = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Warehouse;
+=======
+export default Warehouse;
+>>>>>>> 45558cc (initial commit)

@@ -22,6 +22,19 @@ export const getUsers = (callback) => {
   })
 }
 
+<<<<<<< HEAD
+=======
+export const getLoginLogs = (callback) => {
+  axios
+  .get(`${baseURLBackEnd}/login/logs`)
+  .then((res) => {
+    callback(res.data)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+>>>>>>> 45558cc (initial commit)
 export const loginLogs = (payload) => {
   return axios.post(`${baseURLBackEnd}/login/logs`, payload)
     .then((res) => {
@@ -137,6 +150,75 @@ export const deleteInventoryById = (id, callback) => {
   })
 }
 
+<<<<<<< HEAD
+=======
+export const getMaterial = (callback) => {
+  axios
+  .get(`${baseURLBackEnd}/materials`)
+  .then((res) => {
+    callback(res.data)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+export const getMaterialLogs = (callback) => {
+  axios
+  .get(`${baseURLBackEnd}/materials/logs`)
+  .then((res) => {
+    callback(res.data)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+export const getMaterialById = (id, callback) => {
+  axios
+  .get(`${baseURLBackEnd}/materials/${id}`)  
+  .then((res) => {
+    callback(res.data)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+export const postMaterial = async (payload, callback) => {
+  try {
+      const response = await axios.post(`${baseURLBackEnd}/materials`, payload, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      callback(response.data); // Jika sukses, panggil callback
+  } catch (error) {
+      console.error('Gagal mengirim data:', error);
+  }
+};
+
+export const putMaterial = async (id, payload, callback) => {
+  try {
+      const response = await axios.put(`${baseURLBackEnd}/materials/${id}`, payload, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      callback(response.data); // Jika sukses, panggil callback
+  } catch (error) {
+      console.error('Gagal mengirim data:', error);
+  }
+};
+
+export const deleteMaterialById = (id, callback) => {
+  axios
+  .delete(`${baseURLBackEnd}/materials/${id}`)  
+  .then((res) => {
+    callback(res.data)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+>>>>>>> 45558cc (initial commit)
 export const getWarehouse = (callback) => {
   axios
   .get(`${baseURLBackEnd}/warehouses`)
@@ -324,4 +406,31 @@ export const deleteClusterStockById = (id, callback) => {
   }).catch((err) => {
     console.log(err)
   })
+<<<<<<< HEAD
 }
+=======
+}
+
+export const getOrder = (callback) => {
+  axios
+  .get(`${baseURLBackEnd}/order`)
+  .then((res) => {
+    callback(res.data)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
+
+export const postOrder = async (payload, callback) => {
+  try {
+      const response = await axios.post(`${baseURLBackEnd}/order`, payload, {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      callback(response.data); // Jika sukses, panggil callback
+  } catch (error) {
+      console.error('Gagal mengirim data:', error);
+  }
+};
+>>>>>>> 45558cc (initial commit)

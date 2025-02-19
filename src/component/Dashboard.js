@@ -1,14 +1,35 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
+=======
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.js";
+>>>>>>> 45558cc (initial commit)
 
 // import PieCharts from "./PieCharts";
 import CardBox from "./utils/CardBox";
 import GeoMap from "./GeoMap";
 import EChartsSLA from "./EChartsSLA";
 
+<<<<<<< HEAD
+=======
+//logo
+import { Info } from "lucide-react";
+
+
+
+  
+>>>>>>> 45558cc (initial commit)
 function Dashboard() {
   const [dataCard, setDataCard] = useState({});
   const [dataSLA, setDataSLA] = useState([]);
 
+<<<<<<< HEAD
+=======
+  //fungsi Mobile
+  const isMobile = window.innerWidth <= 768;
+
+
+>>>>>>> 45558cc (initial commit)
   // Fetch SLA data
   const fetchDataSLA = async () => {
     try {
@@ -56,6 +77,7 @@ function Dashboard() {
         <div className="container bg-light">
           {/* Header */}
           <div className="row">
+<<<<<<< HEAD
             <div className="col-12 p-3">
               <div className="d-flex justify-content-between p-4 align-items-center bg-white border border-secondary shadow-sm">
                 <button className="btn btn-primary ms-2">Search</button>
@@ -71,16 +93,49 @@ function Dashboard() {
                     </span>
                   </button>
                   <button type="button" className="btn btn-success">
+=======
+            <div className="col-12 p-3 bg-light">
+              <div
+                className="d-flex justify-content-between align-items-center bg-white border border-secondary shadow-sm border-radius-5px"
+                style={{ padding: isMobile ? "5px" : "20px" }}
+              >
+                <button
+                  className="btn custom-btn ms-2"
+                  style={{ backgroundColor: "white", borderColor: "#C42B2B", fontSize: isMobile ? "12px" : "16px" }}
+                >
+                  Search
+                </button>
+                <h2 style={{ fontSize: isMobile ? "16px" : "24px" }}>Dashboard</h2>
+                <div className="d-flex gap-2">
+                  <button
+                    type="button"
+                    className="btn custom-btn position-relative"
+                    style={{ backgroundColor: "white", borderColor: "#C42B2B", padding: isMobile ? "5px 8px" : "10px 16px" }}
+                  >
+                    <Info size={isMobile ? 16 : 24} color="#C42B2B" />
+                  </button>
+                  <button
+                    type="button"
+                    className="btn custom-btn"
+                    style={{ backgroundColor: "white", borderColor: "#C42B2B", fontSize: isMobile ? "12px" : "16px" }}
+                  >
+>>>>>>> 45558cc (initial commit)
                     Stock
                   </button>
                 </div>
               </div>
             </div>
           </div>
+<<<<<<< HEAD
 
           {/* SLA Comparison */}
           <div className="row">
             <div className="col-12 p-3">
+=======
+          {/* SLA Comparison */}
+          <div className="row">
+            <div className="col-12 p-3 bg-light">
+>>>>>>> 45558cc (initial commit)
               <div className="bg-white border border-secondary shadow-sm">
                 <div className="d-flex justify-content-end p-4">
                   <select className="form-select" style={{ width: "200px" }}>
@@ -91,7 +146,12 @@ function Dashboard() {
                   </select>
                 </div>
                 <div className="p-4">
+<<<<<<< HEAD
                   <h1>SLA Comparison</h1>
+=======
+                  <h1>Value Range</h1>
+                  <h1 ></h1>
+>>>>>>> 45558cc (initial commit)
                   <EChartsSLA inputData={dataSLA} />
                 </div>
               </div>

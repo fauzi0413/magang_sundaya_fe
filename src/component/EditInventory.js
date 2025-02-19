@@ -29,7 +29,11 @@ const EditInventory = () => {
         setError('');
 
         // Basic validation
+<<<<<<< HEAD
         if (!inventory.sap_code || !inventory.name || !inventory.min_stock || !inventory.description) {
+=======
+        if (!inventory.sap_code || !inventory.name || !inventory.description) {
+>>>>>>> 45558cc (initial commit)
             setError('Semua kolom harus diisi.');
             return;
         }
@@ -41,7 +45,10 @@ const EditInventory = () => {
         const payload = {
             name: inventory.name,
             status: inventory.status,
+<<<<<<< HEAD
             min_stock: parseInt(inventory.min_stock),
+=======
+>>>>>>> 45558cc (initial commit)
             description: inventory.description,
             user,
         };
@@ -118,6 +125,7 @@ const EditInventory = () => {
                         </div>
                     </div>
                     <div className="mb-3 form-group">
+<<<<<<< HEAD
                         <h6 className='text-start'>Minimal Stock Barang</h6>
                         <div className="input-group">
                             <span className="input-group-text"><FaBox /></span>
@@ -132,6 +140,8 @@ const EditInventory = () => {
                         </div>
                     </div>
                     <div className="mb-3 form-group">
+=======
+>>>>>>> 45558cc (initial commit)
                         <h6 className='text-start'>Deskripsi Barang</h6>
                         <textarea
                             className="form-control"

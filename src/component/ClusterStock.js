@@ -1,20 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< HEAD
 import { FaSearch, FaPlus, FaTrash, FaEdit } from 'react-icons/fa'; // Importing icons
 import { deleteClusterStockById, getClusterStock } from '../api/axios';
 import Swal from 'sweetalert2';
 import moment from 'moment'
 import 'moment/locale/id'  // without this line it didn't work
+=======
+import { FaSearch, FaPlus, FaTrash, FaEdit, FaEye } from 'react-icons/fa'; // Importing icons
+import { deleteClusterStockById, getClusterStock, getInventory } from '../api/axios';
+import Swal from 'sweetalert2';
+import moment from 'moment'
+import 'moment/locale/id'  // without this line it didn't work
+import HeaderContent from './utils/HeaderContent'; 
+>>>>>>> 45558cc (initial commit)
 moment.locale('id')
 
 const ClusterStock = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [clusterStocks, setClusterStock] = useState([]);
+<<<<<<< HEAD
+=======
+  const [inventorys, setInventory] = useState([]);
+>>>>>>> 45558cc (initial commit)
   const [filterStatus, setFilterStatus] = useState('All'); // State for filtering status
   const navigate = useNavigate();
   
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    getInventory(setInventory);
+>>>>>>> 45558cc (initial commit)
     getClusterStock((data) => {
       setClusterStock(data);  
     });
@@ -26,6 +43,7 @@ const ClusterStock = () => {
     const matchesStatus = filterStatus === 'All' || clusterStock.status === filterStatus;
     return matchesSearch && matchesStatus;
   });
+<<<<<<< HEAD
 
   // Handle status filter buttons
   const handleFilterClick = (status) => {
@@ -35,6 +53,18 @@ const ClusterStock = () => {
   // Handle search input change
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
+=======
+  
+  const getStockStatus = (total_barang, min_stock) => {
+    if (total_barang === 0) return { status: "Kosong", warna: "danger" }; // Merah
+    if (total_barang <= min_stock) return { status: "Butuh Restock", warna: "warning" }; // Kuning
+    return { status: "Ada", warna: "success" }; // Hijau
+  };
+
+  // Handle detail item with specific ID
+  const handleDetailItem = (id) => {
+    navigate(`/clusterstock/${id}`); // Navigasi ke halaman detail dengan ID
+>>>>>>> 45558cc (initial commit)
   };
 
   // Handle edit item with specific ID
@@ -72,6 +102,11 @@ const ClusterStock = () => {
 
   return (
     <div className="container my-5">
+<<<<<<< HEAD
+=======
+      {/* Header for Login Logs */}
+      <HeaderContent title="Cluster Stock" icon="bi-file-earmark-text" />
+>>>>>>> 45558cc (initial commit)
       {/* Search Bar & Add Button */}
      <div className="mt-4 d-flex justify-content-center">
      <div className="gap-2 mb-4 d-flex align-items-center" style={{ maxWidth: '900px', width: '100%' }}>
@@ -104,16 +139,27 @@ const ClusterStock = () => {
         <table className="table table-striped">
           <thead>
             <tr>
+<<<<<<< HEAD
               <th>ID Cluster</th>
               <th>Total Site</th>
               <th>SAP Code</th>
               <th>Total Barang</th>
               <th>Status Barang</th>
               <th>Action</th>
+=======
+              <th>No. </th>
+              <th>SAP Code</th>
+              <th>ID Cluster</th>
+              <th>Total Site</th>
+              <th>Total Barang</th>
+              <th>Status Stock</th>
+              <th className='text-center'>Action</th>
+>>>>>>> 45558cc (initial commit)
             </tr>
           </thead>
           <tbody>
             {filteredData.length > 0 ? (
+<<<<<<< HEAD
               clusterStocks.map((clusterStock) => (
                 <tr key={clusterStock.id}>
                   <td>{clusterStock.id_cluster}</td>
@@ -131,6 +177,29 @@ const ClusterStock = () => {
                   </td>
                 </tr>
               ))
+=======
+              filteredData.map((clusterStock, index) => {
+                const matchedInventory = inventorys.find((inventory) => inventory.sap_code === clusterStock.sap_code);
+                const min_stock = matchedInventory?.min_stock || 0;
+                const { status, warna } = getStockStatus(clusterStock.total, min_stock);
+              
+                return (
+                  <tr key={clusterStock.id}>
+                    <td>{index + 1}</td>
+                    <td>{clusterStock.sap_code}</td>
+                    <td>{clusterStock.id_cluster}</td>
+                    <td>{clusterStock.total_site}</td>
+                    <td>{clusterStock.total}</td>
+                    <td><span className={`ms-2 badge bg-${warna}`}>{status}</span></td>
+                    <td className='text-center'>
+                      <button className='btn' onClick={() => handleDetailItem(clusterStock.id)}><FaEye /></button>
+                      <button className='btn text-primary' onClick={() => handleEditItem(clusterStock.id)}><FaEdit /></button>
+                      <button className='btn text-danger' onClick={() => handleDeleteItem(clusterStock.id)}><FaTrash /></button>
+                    </td>
+                  </tr>
+                );
+              })         
+>>>>>>> 45558cc (initial commit)
             ) : (
               <tr>
                 <td colSpan="7" className="text-center">No data found</td>

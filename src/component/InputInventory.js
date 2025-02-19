@@ -8,8 +8,11 @@ import Swal from 'sweetalert2';
 const InputInventory = () => {
     const [sapCode, setSapCode] = useState('');
     const [itemName, setItemName] = useState('');
+<<<<<<< HEAD
     const [minStock, setMinStock] = useState('');
     const [date, setDate] = useState('');
+=======
+>>>>>>> 45558cc (initial commit)
     const [description, setDescription] = useState('');
     const [error, setError] = useState('');
     
@@ -20,7 +23,11 @@ const InputInventory = () => {
         setError('');
 
         // Basic validation
+<<<<<<< HEAD
         if (!sapCode || !itemName || !minStock || !description) {
+=======
+        if (!sapCode || !itemName || !description) {
+>>>>>>> 45558cc (initial commit)
             setError('All fields are required.');
             return;
         }
@@ -32,17 +39,25 @@ const InputInventory = () => {
         const payload = {
             sap_code: sapCode,
             name : itemName,
+<<<<<<< HEAD
             min_stock: parseInt(minStock),
+=======
+>>>>>>> 45558cc (initial commit)
             description,
             user,
         };
 
+<<<<<<< HEAD
         // console.log(payload)
 
         // Kirim data ke server
         postInventory(payload, (data) => {
             // console.log('Data submitted:', data);
 
+=======
+        // Kirim data ke server
+        postInventory(payload, (data) => {
+>>>>>>> 45558cc (initial commit)
             // Navigasi ke halaman success setelah submit berhasil
             Swal.fire({
                 title: "Success!",
@@ -93,6 +108,7 @@ const InputInventory = () => {
                         </div>
                     </div>
                     <div className="mb-3 form-group">
+<<<<<<< HEAD
                         <h6 className='text-start'>Minimal Stock Barang</h6>
                         <div className="input-group">
                             <span className="input-group-text"><FaBox /></span>
@@ -118,6 +134,8 @@ const InputInventory = () => {
                         </div>
                     </div> */}
                     <div className="mb-3 form-group">
+=======
+>>>>>>> 45558cc (initial commit)
                     <h6 className='text-start'>Deskripsi Barang</h6>
                         <textarea
                             className="form-control"

@@ -551,4 +551,29 @@
 
 .warehouse-add-button:hover {
   background-color: #2563eb;
+<<<<<<< HEAD
+=======
+}
+
+.order-toggle {
+  background-color: #3b82f6;
+  border-radius: 9999px;
+  padding: 0.25rem;
+  display: flex;
+}
+
+.order-toggle-button {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  font-size: 0.875rem;
+  color: white;
+  background: none;
+  cursor: pointer;
+}
+
+.order-toggle-active {
+  background-color: white;
+  color: #3b82f6;
+>>>>>>> 45558cc (initial commit)
 }

@@ -27,7 +27,11 @@ const LoginPage = () => {
         if (user || sundaya) {
             let role;
             if(sundaya){
+<<<<<<< HEAD
                 role = "admin"
+=======
+                role = "noc"
+>>>>>>> 45558cc (initial commit)
             }
             else{
                 role = user.role;
@@ -40,10 +44,17 @@ const LoginPage = () => {
             if(username === "admin_sundaya"){
                 navigate('/')
             }else{
+<<<<<<< HEAD
                 if (role === 'admin') {
                     navigate('/');
                 } else if (role === 'management') {
                     navigate('/DashboardWarehouse');
+=======
+                if (role === 'noc') {
+                    navigate('/');
+                } else if (role === 'om') {
+                    navigate('/Dashboard');
+>>>>>>> 45558cc (initial commit)
                 }
             }
 
